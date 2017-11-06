@@ -1,0 +1,4 @@
+dezena  - 0x3030
+unidade - 0x3020
+chave   - 0x3010
+start   - 0x3000
