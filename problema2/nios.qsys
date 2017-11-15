@@ -6,7 +6,7 @@
    version="1.0"
    description=""
    tags=""
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element chave
@@ -127,7 +127,7 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="" />
+ <parameter name="projectName" value="pbl2.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
@@ -250,8 +250,8 @@
   <parameter name="mpu_numOfDataRegion" value="8" />
   <parameter name="mpu_numOfInstRegion" value="8" />
   <parameter name="mpu_useLimit" value="false" />
-  <parameter name="muldiv_divider" value="false" />
-  <parameter name="muldiv_multiplierType" value="EmbeddedMulFast" />
+  <parameter name="muldiv_divider" value="true" />
+  <parameter name="muldiv_multiplierType" value="LogicElementsFast" />
   <parameter name="ocimem_ramBlockType" value="Automatic" />
   <parameter name="regfile_ramBlockType" value="Automatic" />
   <parameter name="resetOffset" value="0" />

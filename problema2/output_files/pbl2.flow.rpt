@@ -1,5 +1,5 @@
 Flow report for pbl2
-Mon Nov 06 00:20:24 2017
+Wed Nov 15 13:34:08 2017
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -41,21 +41,21 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Nov 06 00:20:16 2017       ;
+; Flow Status                        ; Successful - Wed Nov 15 13:34:08 2017       ;
 ; Quartus Prime Version              ; 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
 ; Revision Name                      ; pbl2                                        ;
 ; Top-level Entity Name              ; pbl2                                        ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE30F23C7                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 2,343 / 28,848 ( 8 % )                      ;
-;     Total combinational functions  ; 2,115 / 28,848 ( 7 % )                      ;
-;     Dedicated logic registers      ; 1,366 / 28,848 ( 5 % )                      ;
-; Total registers                    ; 1366                                        ;
+; Total logic elements               ; 2,764 / 28,848 ( 10 % )                     ;
+;     Total combinational functions  ; 2,493 / 28,848 ( 9 % )                      ;
+;     Dedicated logic registers      ; 1,511 / 28,848 ( 5 % )                      ;
+; Total registers                    ; 1511                                        ;
 ; Total pins                         ; 33 / 329 ( 10 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 77,056 / 608,256 ( 13 % )                   ;
-; Embedded Multiplier 9-bit elements ; 4 / 132 ( 3 % )                             ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                             ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/06/2017 00:18:23 ;
+; Start date & time ; 11/15/2017 13:29:26 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; pbl2                ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 9474729971539.150993470205204          ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 9474729971539.151075976608336          ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
@@ -94,11 +94,15 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:10     ; 1.0                     ; 802 MB              ; 00:01:49                           ;
-; Fitter                    ; 00:00:27     ; 1.0                     ; 1215 MB             ; 00:00:24                           ;
-; Assembler                 ; 00:00:03     ; 1.0                     ; 574 MB              ; 00:00:03                           ;
-; TimeQuest Timing Analyzer ; 00:00:06     ; 1.1                     ; 680 MB              ; 00:00:05                           ;
-; Total                     ; 00:01:46     ; --                      ; --                  ; 00:02:21                           ;
+; Analysis & Synthesis      ; 00:01:28     ; 1.0                     ; 799 MB              ; 00:01:58                           ;
+; Fitter                    ; 00:00:33     ; 1.0                     ; 1216 MB             ; 00:00:27                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 576 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:14     ; 1.1                     ; 682 MB              ; 00:00:06                           ;
+; MIF/HEX Update            ; 00:00:04     ; 1.0                     ; 618 MB              ; 00:00:03                           ;
+; Assembler                 ; 00:00:20     ; 1.0                     ; 579 MB              ; 00:00:04                           ;
+; MIF/HEX Update            ; 00:00:09     ; 1.0                     ; 617 MB              ; 00:00:03                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 579 MB              ; 00:00:03                           ;
+; Total                     ; 00:03:03     ; --                      ; --                  ; 00:02:48                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -111,6 +115,10 @@ agreement for further details.
 ; Fitter                    ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
 ; Assembler                 ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
 ; TimeQuest Timing Analyzer ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; MIF/HEX Update            ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; MIF/HEX Update            ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; DESKTOP-5A2F8TJ  ; Windows 10 ; 10.0       ; x86_64         ;
 +---------------------------+------------------+------------+------------+----------------+
 
 
@@ -121,6 +129,10 @@ quartus_map --read_settings_files=on --write_settings_files=off pbl2 -c pbl2
 quartus_fit --read_settings_files=off --write_settings_files=off pbl2 -c pbl2
 quartus_asm --read_settings_files=off --write_settings_files=off pbl2 -c pbl2
 quartus_sta pbl2 -c pbl2
+quartus_cdb pbl2 -c pbl2 --update_mif
+quartus_asm --read_settings_files=on --write_settings_files=off pbl2 -c pbl2
+quartus_cdb pbl2 -c pbl2 --update_mif
+quartus_asm --read_settings_files=on --write_settings_files=off pbl2 -c pbl2
 
 
 

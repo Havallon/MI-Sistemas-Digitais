@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="nios" kind="nios" version="1.0" fabric="QSYS">
  <!-- Format version 17.0 602 (Future versions may contain additional information.) -->
- <!-- 2017.11.05.14:45:39 -->
+ <!-- 2017.11.15.13:28:14 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1509900339</value>
+  <value>1510759693</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -2020,7 +2020,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_DIVIDE_PRESENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_MULTIPLY_PRESENT</name>
@@ -2109,6 +2109,10 @@ the requested settings for a module instance. -->
   <assignment>
    <name>embeddedsw.dts.params.ALTR,exception-addr</name>
    <value>0x00001020</value>
+  </assignment>
+  <assignment>
+   <name>embeddedsw.dts.params.ALTR,has-div</name>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.ALTR,has-mul</name>
@@ -2404,7 +2408,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="muldiv_divider">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2668,7 +2672,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="muldiv_multiplierType">
    <type>java.lang.String</type>
-   <value>EmbeddedMulFast</value>
+   <value>LogicElementsFast</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
