@@ -1,28 +1,28 @@
 # do alu.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:30:32 on Nov 26,2017
+# Start time: 20:52:44 on Nov 29,2017
 # vlog -work work alu.vo 
-# -- Compiling module div
+# -- Compiling module resto
 # -- Compiling module hard_block
 # 
 # Top level modules:
-# 	div
-# End time: 23:30:32 on Nov 26,2017, Elapsed time: 0:00:00
+# 	resto
+# End time: 20:52:44 on Nov 29,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:30:33 on Nov 26,2017
-# vlog -work work div.vwf.vt 
-# -- Compiling module div_vlg_vec_tst
+# Start time: 20:52:44 on Nov 29,2017
+# vlog -work work resto.vwf.vt 
+# -- Compiling module resto_vlg_vec_tst
 # 
 # Top level modules:
-# 	div_vlg_vec_tst
-# End time: 23:30:33 on Nov 26,2017, Elapsed time: 0:00:00
+# 	resto_vlg_vec_tst
+# End time: 20:52:44 on Nov 29,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.div_vlg_vec_tst 
-# Start time: 23:30:33 on Nov 26,2017
-# Loading work.div_vlg_vec_tst
-# Loading work.div
+# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.resto_vlg_vec_tst 
+# Start time: 20:52:44 on Nov 29,2017
+# Loading work.resto_vlg_vec_tst
+# Loading work.resto
 # Loading work.hard_block
 # Loading cycloneive_ver.cycloneive_io_obuf
 # Loading cycloneive_ver.cycloneive_io_ibuf
@@ -33,7 +33,7 @@
 # Loading altera_ver.dffeas
 # Loading altera_ver.PRIM_GDFF_LOW
 # after#26
-# ** Note: $finish    : div.vwf.vt(57)
-#    Time: 5 us  Iteration: 0  Instance: /div_vlg_vec_tst
-# End time: 23:30:34 on Nov 26,2017, Elapsed time: 0:00:01
+# ** Note: $finish    : resto.vwf.vt(57)
+#    Time: 5 us  Iteration: 0  Instance: /resto_vlg_vec_tst
+# End time: 20:52:45 on Nov 29,2017, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
