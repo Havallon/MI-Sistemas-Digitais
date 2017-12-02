@@ -1,0 +1,2 @@
+module vgaPxlGen (clk, rst, pxl_en, x, y, r, g, b);
+endmodule
