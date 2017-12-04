@@ -1,3 +1,6 @@
+//VGA Sincronizador
+// Crystal & Havallon
+// 02/12/2017
 module vgaSync(clk, rst, hsync, vsync, hpos, vpos, pxl_en);
 
 	input clk;
@@ -21,6 +24,7 @@ module vgaSync(clk, rst, hsync, vsync, hpos, vpos, pxl_en);
 	localparam vsp = 6;
 	localparam vbp = 23;
 	
+	// Pecorrendo a tela, pixel por pixel
 	always @ (posedge clk or posedge rst) begin
 		if (rst) begin
 			hpos   <= 11'd0;
@@ -39,6 +43,7 @@ module vgaSync(clk, rst, hsync, vsync, hpos, vpos, pxl_en);
 		end
 	end
 	
+	// Gerando a sincronia horizontal e vertical
 	always @ (posedge clk or posedge rst) begin
 		if (rst) begin
 			hsync  <= 1'b0;
@@ -58,6 +63,7 @@ module vgaSync(clk, rst, hsync, vsync, hpos, vpos, pxl_en);
 		end
 	end
 	
+	// Definindo a area visivel
 	always @ (posedge clk or posedge rst) begin
 		if (rst) begin
 			pxl_en <= 1'b0;

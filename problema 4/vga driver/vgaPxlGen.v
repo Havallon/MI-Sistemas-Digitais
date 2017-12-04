@@ -10,8 +10,7 @@ module vgaPxlGen (clk, rst, pxl_en, x, y, r, g, b);
 	output reg g;
 	output reg b;
 	
-	
-	
+	// Deizando a tela vermelha
 	always @ (posedge clk or posedge rst) begin
 		if (rst) begin
 			r <= 1'b0;

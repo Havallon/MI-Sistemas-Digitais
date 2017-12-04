@@ -1,3 +1,6 @@
+//VGA DRIVER
+// Crystal & Havallon
+// 02/12/2017
 module vgaDriver(clk, rst, hsync, vsync, r, g, b);
 	
 	input clk;
