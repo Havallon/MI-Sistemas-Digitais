@@ -1,5 +1,5 @@
 Analysis & Synthesis report for AD
-Mon Dec 04 00:40:35 2017
+Mon Dec 04 01:49:17 2017
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -13,14 +13,12 @@ Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Inverted Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -47,15 +45,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Dec 04 00:40:34 2017       ;
+; Analysis & Synthesis Status        ; Successful - Mon Dec 04 01:49:17 2017       ;
 ; Quartus Prime Version              ; 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
 ; Revision Name                      ; AD                                          ;
 ; Top-level Entity Name              ; AD                                          ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 60                                          ;
-;     Total combinational functions  ; 49                                          ;
-;     Dedicated logic registers      ; 39                                          ;
-; Total registers                    ; 39                                          ;
+; Total logic elements               ; 54                                          ;
+;     Total combinational functions  ; 30                                          ;
+;     Dedicated logic registers      ; 41                                          ;
+; Total registers                    ; 41                                          ;
 ; Total pins                         ; 22                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -181,20 +179,20 @@ agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 60        ;
+; Estimated Total logic elements              ; 54        ;
 ;                                             ;           ;
-; Total combinational functions               ; 49        ;
+; Total combinational functions               ; 30        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 23        ;
-;     -- 3 input functions                    ; 8         ;
-;     -- <=2 input functions                  ; 18        ;
+;     -- 4 input functions                    ; 10        ;
+;     -- 3 input functions                    ; 6         ;
+;     -- <=2 input functions                  ; 14        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 41        ;
+;     -- normal mode                          ; 22        ;
 ;     -- arithmetic mode                      ; 8         ;
 ;                                             ;           ;
-; Total registers                             ; 39        ;
-;     -- Dedicated logic registers            ; 39        ;
+; Total registers                             ; 41        ;
+;     -- Dedicated logic registers            ; 41        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 22        ;
@@ -202,9 +200,9 @@ agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; sclk~reg0 ;
-; Maximum fan-out                             ; 38        ;
-; Total fan-out                               ; 324       ;
-; Average fan-out                             ; 2.45      ;
+; Maximum fan-out                             ; 40        ;
+; Total fan-out                               ; 277       ;
+; Average fan-out                             ; 2.41      ;
 +---------------------------------------------+-----------+
 
 
@@ -213,30 +211,9 @@ agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |AD                        ; 49 (49)             ; 39 (39)                   ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |AD                 ; AD          ; work         ;
+; |AD                        ; 30 (30)             ; 41 (41)                   ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |AD                 ; AD          ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+-------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                  ;
-+---------------------------------------+---------------------------------------------+
-; Register name                         ; Reason for Removal                          ;
-+---------------------------------------+---------------------------------------------+
-; data[0]                               ; Stuck at GND due to stuck port clock_enable ;
-; data_o[0]~reg0                        ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 2 ;                                             ;
-+---------------------------------------+---------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                             ;
-+---------------+--------------------------------+----------------------------------------+
-; Register name ; Reason for Removal             ; Registers Removed due to This Register ;
-+---------------+--------------------------------+----------------------------------------+
-; data[0]       ; Stuck at GND                   ; data_o[0]~reg0                         ;
-;               ; due to stuck port clock_enable ;                                        ;
-+---------------+--------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -244,12 +221,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 39    ;
+; Total registers                              ; 41    ;
 ; Number of registers using Synchronous Clear  ; 5     ;
 ; Number of registers using Synchronous Load   ; 5     ;
-; Number of registers using Asynchronous Clear ; 28    ;
+; Number of registers using Asynchronous Clear ; 29    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 21    ;
+; Number of registers using Clock Enable       ; 34    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -259,10 +236,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; pulsos[2]                              ; 5       ;
-; pulsos[3]                              ; 9       ;
-; cnvst~reg0                             ; 14      ;
-; Total number of inverted registers = 3 ;         ;
+; cnvst~reg0                             ; 16      ;
+; Total number of inverted registers = 1 ;         ;
 +----------------------------------------+---------+
 
 
@@ -271,9 +246,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |AD|pulsos[4]              ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |AD|pulsos[4]              ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |AD|latencia[2]            ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |AD|pulsos[3]              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -283,23 +257,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 22                          ;
-; cycloneiii_ff         ; 39                          ;
-;     CLR               ; 18                          ;
-;     ENA               ; 11                          ;
+; cycloneiii_ff         ; 41                          ;
+;     CLR               ; 7                           ;
+;     ENA               ; 12                          ;
+;     ENA CLR           ; 12                          ;
 ;     ENA CLR SCLR      ; 5                           ;
 ;     ENA CLR SLD       ; 5                           ;
-; cycloneiii_lcell_comb ; 50                          ;
+; cycloneiii_lcell_comb ; 31                          ;
 ;     arith             ; 8                           ;
 ;         2 data inputs ; 8                           ;
-;     normal            ; 42                          ;
+;     normal            ; 23                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 6                           ;
-;         3 data inputs ; 8                           ;
-;         4 data inputs ; 23                          ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 6                           ;
+;         4 data inputs ; 10                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.16                        ;
+; Average LUT depth     ; 1.56                        ;
 +-----------------------+-----------------------------+
 
 
@@ -318,7 +293,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Mon Dec 04 00:40:13 2017
+    Info: Processing started: Mon Dec 04 01:48:56 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AD -c AD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -333,18 +308,17 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "sd" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/AD_SPI/AD.v Line: 15
     Warning (13410): Pin "ub" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/AD_SPI/AD.v Line: 16
     Warning (13410): Pin "sel" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/AD_SPI/AD.v Line: 17
-    Warning (13410): Pin "data_o[0]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/AD_SPI/AD.v Line: 56
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 82 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 76 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 19 output pins
-    Info (21061): Implemented 60 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 629 megabytes
-    Info: Processing ended: Mon Dec 04 00:40:35 2017
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:43
+    Info (21061): Implemented 54 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 631 megabytes
+    Info: Processing ended: Mon Dec 04 01:49:17 2017
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:47
 
 

@@ -51,7 +51,7 @@ module AD (rst, clk, cnvst, cs, out0, refsel, sclk, sd, ub, sel, data_o);
 			data     <= 12'd0;
 			latencia <= 3'd0;
 			timing   <= 5'd0;
-			pulsos   <= 5'd12;
+			pulsos   <= 5'd0;
 		end else begin
 			if (cnvst) begin
 				//gerando pulso para inciar uma nova conversÃ£o
@@ -59,21 +59,22 @@ module AD (rst, clk, cnvst, cs, out0, refsel, sclk, sd, ub, sel, data_o);
 					cnvst    <= 1'b0;
 					timing   <= 5'd0;
 					latencia <= 3'd0;
-					pulsos   <= 5'd12;
+					pulsos   <= 5'd0;
 				end else begin
 					timing <= timing + 5'd1;
 				end
 			end else begin
 				//verificando o 5 pulso para iniciar a leitura
 				if (latencia == 4) begin
-					if (pulsos == 0) begin
+					if (pulsos == 13) begin
 						data_o   <= data;
-						pulsos   <= 5'd12;
+						pulsos   <= 5'd11;
 						latencia <= 3'd0;
 						cnvst    <= 1'b1;
 					end else begin
-						pulsos <= pulsos - 5'd1;
-						data[pulsos] <= out0;
+						pulsos <= pulsos + 5'd1;
+						data <= data << 1;
+						data[0] <= out0;
 					end
 				end else begin
 					latencia <= latencia + 1'd1;
