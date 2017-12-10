@@ -1,5 +1,5 @@
 Analysis & Synthesis report for vgaDriver
-Sat Dec 02 21:45:17 2017
+Sun Dec 10 12:47:56 2017
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -44,13 +44,13 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Dec 02 21:45:17 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun Dec 10 12:47:56 2017       ;
 ; Quartus Prime Version              ; 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
 ; Revision Name                      ; vgaDriver                                   ;
 ; Top-level Entity Name              ; vgaDriver                                   ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 43                                          ;
-;     Total combinational functions  ; 42                                          ;
+; Total logic elements               ; 38                                          ;
+;     Total combinational functions  ; 37                                          ;
 ;     Dedicated logic registers      ; 25                                          ;
 ; Total registers                    ; 25                                          ;
 ; Total pins                         ; 16                                          ;
@@ -172,50 +172,52 @@ agreement for further details.
 ; vgaDriver.v                      ; yes             ; User Verilog HDL File  ; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v ;         ;
 ; vgaSync.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaSync.v   ;         ;
 ; vgaPxlGen.v                      ; yes             ; User Verilog HDL File  ; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaPxlGen.v ;         ;
+; clk50to25.v                      ; yes             ; User Verilog HDL File  ; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/clk50to25.v ;         ;
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 43        ;
-;                                             ;           ;
-; Total combinational functions               ; 42        ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 18        ;
-;     -- 3 input functions                    ; 3         ;
-;     -- <=2 input functions                  ; 21        ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 23        ;
-;     -- arithmetic mode                      ; 19        ;
-;                                             ;           ;
-; Total registers                             ; 25        ;
-;     -- Dedicated logic registers            ; 25        ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 16        ;
-;                                             ;           ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 25        ;
-; Total fan-out                               ; 249       ;
-; Average fan-out                             ; 2.52      ;
-+---------------------------------------------+-----------+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                               ;
++---------------------------------------------+-----------------------------+
+; Resource                                    ; Usage                       ;
++---------------------------------------------+-----------------------------+
+; Estimated Total logic elements              ; 38                          ;
+;                                             ;                             ;
+; Total combinational functions               ; 37                          ;
+; Logic element usage by number of LUT inputs ;                             ;
+;     -- 4 input functions                    ; 12                          ;
+;     -- 3 input functions                    ; 3                           ;
+;     -- <=2 input functions                  ; 22                          ;
+;                                             ;                             ;
+; Logic elements by mode                      ;                             ;
+;     -- normal mode                          ; 19                          ;
+;     -- arithmetic mode                      ; 18                          ;
+;                                             ;                             ;
+; Total registers                             ; 25                          ;
+;     -- Dedicated logic registers            ; 25                          ;
+;     -- I/O registers                        ; 0                           ;
+;                                             ;                             ;
+; I/O pins                                    ; 16                          ;
+;                                             ;                             ;
+; Embedded Multiplier 9-bit elements          ; 0                           ;
+;                                             ;                             ;
+; Maximum fan-out node                        ; clk50to25:clk50to25|clk_out ;
+; Maximum fan-out                             ; 25                          ;
+; Total fan-out                               ; 225                         ;
+; Average fan-out                             ; 2.39                        ;
++---------------------------------------------+-----------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                              ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name         ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------+-------------+--------------+
-; |vgaDriver                 ; 42 (0)              ; 25 (0)                    ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |vgaDriver                  ; vgaDriver   ; work         ;
-;    |vgaPxlGen:comb_3|      ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgaDriver|vgaPxlGen:comb_3 ; vgaPxlGen   ; work         ;
-;    |vgaSync:vgaSync|       ; 42 (42)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgaDriver|vgaSync:vgaSync  ; vgaSync     ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------+-------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                 ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name            ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------+-------------+--------------+
+; |vgaDriver                 ; 37 (0)              ; 25 (0)                    ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |vgaDriver                     ; vgaDriver   ; work         ;
+;    |clk50to25:clk50to25|   ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgaDriver|clk50to25:clk50to25 ; clk50to25   ; work         ;
+;    |vgaPxlGen:vgaPxlGen|   ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgaDriver|vgaPxlGen:vgaPxlGen ; vgaPxlGen   ; work         ;
+;    |vgaSync:vgaSync|       ; 36 (36)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgaDriver|vgaSync:vgaSync     ; vgaSync     ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -224,8 +226,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+----------------------------------------+
 ; Register name                         ; Reason for Removal                     ;
 +---------------------------------------+----------------------------------------+
-; vgaPxlGen:comb_3|g                    ; Stuck at GND due to stuck port data_in ;
-; vgaPxlGen:comb_3|b                    ; Stuck at GND due to stuck port data_in ;
+; vgaPxlGen:vgaPxlGen|g                 ; Stuck at GND due to stuck port data_in ;
+; vgaPxlGen:vgaPxlGen|b                 ; Stuck at GND due to stuck port data_in ;
 ; Total Number of Removed Registers = 2 ;                                        ;
 +---------------------------------------+----------------------------------------+
 
@@ -236,7 +238,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 25    ;
-; Number of registers using Synchronous Clear  ; 21    ;
+; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 25    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -252,20 +254,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; boundary_port         ; 16                          ;
 ; cycloneiii_ff         ; 25                          ;
-;     CLR               ; 4                           ;
-;     CLR SCLR          ; 11                          ;
+;     CLR               ; 5                           ;
+;     CLR SCLR          ; 10                          ;
 ;     ENA CLR SCLR      ; 10                          ;
-; cycloneiii_lcell_comb ; 43                          ;
-;     arith             ; 19                          ;
-;         2 data inputs ; 19                          ;
-;     normal            ; 24                          ;
+; cycloneiii_lcell_comb ; 38                          ;
+;     arith             ; 18                          ;
+;         2 data inputs ; 18                          ;
+;     normal            ; 20                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 2                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 1                           ;
 ;         3 data inputs ; 3                           ;
-;         4 data inputs ; 18                          ;
+;         4 data inputs ; 12                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.14                        ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 1.93                        ;
 +-----------------------+-----------------------------+
 
 
@@ -274,7 +277,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -284,40 +287,42 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Sat Dec 02 21:44:54 2017
+    Info: Processing started: Sun Dec 10 12:47:35 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vgaDriver -c vgaDriver
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file vgadriver.v
-    Info (12023): Found entity 1: vgaDriver File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 1
+    Info (12023): Found entity 1: vgaDriver File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file vgasync.v
-    Info (12023): Found entity 1: vgaSync File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaSync.v Line: 1
+    Info (12023): Found entity 1: vgaSync File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaSync.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file vgapxlgen.v
     Info (12023): Found entity 1: vgaPxlGen File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaPxlGen.v Line: 1
-Critical Warning (10846): Verilog HDL Instantiation warning at vgaDriver.v(39): instance has no name File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file clk50to25.v
+    Info (12023): Found entity 1: clk50to25 File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/clk50to25.v Line: 1
 Info (12127): Elaborating entity "vgaDriver" for the top level hierarchy
-Info (12128): Elaborating entity "vgaSync" for hierarchy "vgaSync:vgaSync" File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 28
-Info (12128): Elaborating entity "vgaPxlGen" for hierarchy "vgaPxlGen:comb_3" File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 39
+Info (12128): Elaborating entity "clk50to25" for hierarchy "clk50to25:clk50to25" File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 36
+Info (12128): Elaborating entity "vgaSync" for hierarchy "vgaSync:vgaSync" File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 46
+Info (12128): Elaborating entity "vgaPxlGen" for hierarchy "vgaPxlGen:vgaPxlGen" File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 58
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "g[0]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 9
-    Warning (13410): Pin "g[1]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 9
-    Warning (13410): Pin "g[2]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 9
-    Warning (13410): Pin "g[3]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 9
-    Warning (13410): Pin "b[0]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 10
-    Warning (13410): Pin "b[1]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 10
-    Warning (13410): Pin "b[2]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 10
-    Warning (13410): Pin "b[3]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 10
+    Warning (13410): Pin "g[0]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 12
+    Warning (13410): Pin "g[1]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 12
+    Warning (13410): Pin "g[2]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 12
+    Warning (13410): Pin "g[3]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 12
+    Warning (13410): Pin "b[0]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 13
+    Warning (13410): Pin "b[1]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 13
+    Warning (13410): Pin "b[2]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 13
+    Warning (13410): Pin "b[3]" is stuck at GND File: C:/Users/Havallon/Desktop/mi/problema 4/vga driver/vgaDriver.v Line: 13
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 59 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 54 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 14 output pins
-    Info (21061): Implemented 43 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 628 megabytes
-    Info: Processing ended: Sat Dec 02 21:45:17 2017
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:47
+    Info (21061): Implemented 38 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 660 megabytes
+    Info: Processing ended: Sun Dec 10 12:47:57 2017
+    Info: Elapsed time: 00:00:22
+    Info: Total CPU time (on all processors): 00:00:46
 
 

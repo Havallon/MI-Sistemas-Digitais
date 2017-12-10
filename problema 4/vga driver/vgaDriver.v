@@ -13,36 +13,48 @@ module vgaDriver(clk, rst, hsync, vsync, r, g, b);
 	output [3:0] b;
 	
 	wire [9:0] x;
-	wire [10:0]  y;
+	wire [9:0] y;
 	wire en;
 	
-	wire rb;
-	wire gb;
+	wire rr;
+	wire gg;
 	wire bb;
 	
+	wire frame_pulse;
+	
+	wire clk25;
+	
+	assign vsync = frame_pulse;
+	assign r = {rr,rr,rr,rr};
+	assign g = {gg,gg,gg,gg};
+	assign b = {bb,bb,bb,bb};
+	
+	clk50to25 clk50to25 (
+		.rst(rst),
+		.clk_in(clk),
+		.clk_out(clk25)
+	);
+	
 	vgaSync vgaSync(
-		.clk(clk),
+		.clk(clk25),
 		.rst(rst),
 		.hsync(hsync),
-		.vsync(vsync),
-		.hpos(y),
-		.vpos(x),
+		.vsync(frame_pulse),
+		.hpos(x),
+		.vpos(y),
 		.pxl_en(en)
 	);
 	
-	vgaPxlGen (
-		.clk(clk),
+	vgaPxlGen vgaPxlGen (
+		.clk(clk25),
+		.frame_pulse(frame_pulse),
 		.rst(rst),
 		.pxl_en(en),
 		.x(x),
 		.y(y),
-		.r(rb),
-		.g(gb),
+		.r(rr),
+		.g(gg),
 		.b(bb)
 	);
-	
-	assign r = {rb,rb,rb,rb};
-	assign g = {gb,gb,gb,gb};
-	assign b = {bb,bb,bb,bb};
 	
 endmodule

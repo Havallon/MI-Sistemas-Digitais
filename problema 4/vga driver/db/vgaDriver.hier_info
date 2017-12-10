@@ -1,20 +1,26 @@
 |vgaDriver
-clk => clk.IN2
-rst => rst.IN2
-hsync << vgaSync:vgaSync.hsync
-vsync << vgaSync:vgaSync.vsync
-r[0] << vgaPxlGen:comb_3.r
-r[1] << vgaPxlGen:comb_3.r
-r[2] << vgaPxlGen:comb_3.r
-r[3] << vgaPxlGen:comb_3.r
-g[0] << vgaPxlGen:comb_3.g
-g[1] << vgaPxlGen:comb_3.g
-g[2] << vgaPxlGen:comb_3.g
-g[3] << vgaPxlGen:comb_3.g
-b[0] << vgaPxlGen:comb_3.b
-b[1] << vgaPxlGen:comb_3.b
-b[2] << vgaPxlGen:comb_3.b
-b[3] << vgaPxlGen:comb_3.b
+clk => clk.IN1
+rst => rst.IN3
+hsync <= vgaSync:vgaSync.hsync
+vsync <= frame_pulse.DB_MAX_OUTPUT_PORT_TYPE
+r[0] <= vgaPxlGen:vgaPxlGen.r
+r[1] <= vgaPxlGen:vgaPxlGen.r
+r[2] <= vgaPxlGen:vgaPxlGen.r
+r[3] <= vgaPxlGen:vgaPxlGen.r
+g[0] <= vgaPxlGen:vgaPxlGen.g
+g[1] <= vgaPxlGen:vgaPxlGen.g
+g[2] <= vgaPxlGen:vgaPxlGen.g
+g[3] <= vgaPxlGen:vgaPxlGen.g
+b[0] <= vgaPxlGen:vgaPxlGen.b
+b[1] <= vgaPxlGen:vgaPxlGen.b
+b[2] <= vgaPxlGen:vgaPxlGen.b
+b[3] <= vgaPxlGen:vgaPxlGen.b
+
+
+|vgaDriver|clk50to25:clk50to25
+rst => clk_out~reg0.ACLR
+clk_in => clk_out~reg0.CLK
+clk_out <= clk_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |vgaDriver|vgaSync:vgaSync
@@ -41,7 +47,6 @@ clk => hpos[6]~reg0.CLK
 clk => hpos[7]~reg0.CLK
 clk => hpos[8]~reg0.CLK
 clk => hpos[9]~reg0.CLK
-clk => hpos[10]~reg0.CLK
 rst => pxl_en~reg0.ACLR
 rst => vsync~reg0.ACLR
 rst => hsync~reg0.ACLR
@@ -65,7 +70,6 @@ rst => hpos[6]~reg0.ACLR
 rst => hpos[7]~reg0.ACLR
 rst => hpos[8]~reg0.ACLR
 rst => hpos[9]~reg0.ACLR
-rst => hpos[10]~reg0.ACLR
 hsync <= hsync~reg0.DB_MAX_OUTPUT_PORT_TYPE
 vsync <= vsync~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hpos[0] <= hpos[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -78,7 +82,6 @@ hpos[6] <= hpos[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hpos[7] <= hpos[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hpos[8] <= hpos[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 hpos[9] <= hpos[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-hpos[10] <= hpos[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 vpos[0] <= vpos[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 vpos[1] <= vpos[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 vpos[2] <= vpos[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -92,10 +95,11 @@ vpos[9] <= vpos[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pxl_en <= pxl_en~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|vgaDriver|vgaPxlGen:comb_3
+|vgaDriver|vgaPxlGen:vgaPxlGen
 clk => b~reg0.CLK
 clk => g~reg0.CLK
 clk => r~reg0.CLK
+frame_pulse => ~NO_FANOUT~
 rst => b~reg0.ACLR
 rst => g~reg0.ACLR
 rst => r~reg0.ACLR
@@ -120,7 +124,6 @@ y[6] => ~NO_FANOUT~
 y[7] => ~NO_FANOUT~
 y[8] => ~NO_FANOUT~
 y[9] => ~NO_FANOUT~
-y[10] => ~NO_FANOUT~
 r <= r~reg0.DB_MAX_OUTPUT_PORT_TYPE
 g <= g~reg0.DB_MAX_OUTPUT_PORT_TYPE
 b <= b~reg0.DB_MAX_OUTPUT_PORT_TYPE

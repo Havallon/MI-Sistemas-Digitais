@@ -1,10 +1,11 @@
-module vgaPxlGen (clk, rst, pxl_en, x, y, r, g, b);
+module vgaPxlGen (clk, frame_pulse, rst, pxl_en, x, y, r, g, b);
 
 	input clk;
 	input rst;
 	input pxl_en;
+	input frame_pulse;
 	input [9:0]  x;
-	input [10:0] y;
+	input [9:0] y;
 	
 	output reg r;
 	output reg g;
