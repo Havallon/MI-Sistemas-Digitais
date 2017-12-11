@@ -21,17 +21,17 @@ module lcd_driver (dataa, datab, result, clk, clk_en, start, reset, done, rs, rw
 
 	assign rw = 1'b0;
 	
-	reg [16:0] contador;
+	reg [15:0] contador;
 	
-	localparam idle = 0, working = 1, finish = 2;
+	localparam idle = 2'b00, working = 2'b01, finish = 2'b11;
 	
 	reg [1:0] state;
 	
 	always @ (posedge clk or posedge reset) begin
 		if (reset) begin
-			contador <= 17'd0;
+			contador <= 16'd0;
 			rs       <= 1'b0;
-			en       <= 1'b0;
+			en       <= 1'b1;
 			db       <= 8'b0;
 			state    <= 1'b0;
 		end else begin
@@ -39,30 +39,37 @@ module lcd_driver (dataa, datab, result, clk, clk_en, start, reset, done, rs, rw
 				case (state)
 					idle:begin
 						done <= 1'b0;
+						en <= 1'b1;
 						if (start) begin
 							state <= working;
 							rs <= dataa[0];
 							db <= datab[7:0];
-							contador <= 17'd0;
-							en <= 1'b1;
+							contador <= 16'd0;
 						end else begin
 							state <= idle;
 						end
 					end
-					working:begin
+					working:begin // esperando 1ms com en = 1;
 						done <= 1'b0;
-						if (contador == 17'd100_000) begin
+						if (contador == 16'd50_000) begin
 							state <= finish;
 							en    <= 1'b0;
+							contador <= 16'd0;
 						end else begin
 							contador <= contador + 1'd1;
 							state <= working;
 						end
 					end
-					finish:begin
-						done <= 1'b1;
-						result <= 1'b1;
-						state <= idle;
+					finish:begin //esperando 1ms com en = 0;
+						if (contador == 16'd50_000) begin
+							done <= 1'b1;
+							result <= 1'b1;
+							state <= idle;
+							contador <= 16'd0;
+							en <= 1'b0;
+						end else begin
+							contador <= contador + 16'd1;
+						end
 					end
 				endcase
 			end

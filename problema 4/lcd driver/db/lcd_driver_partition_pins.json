@@ -48,11 +48,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "clk_en",
+					"name" : "reset",
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "clk_en",
 					"strict" : false
 				},
 				{
