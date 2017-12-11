@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Dec 10 23:12:14 2017
+Quartus Prime Version : 17.0.2 Build 602 07/19/2017 SJ Lite Edition
+Revision Name : lcd_driver
+Top-level Entity Name : lcd_driver
+Family : Cyclone IV E
+Total logic elements : 40
+    Total combinational functions : 31
+    Dedicated logic registers : 31
+Total registers : 31
+Total pins : 112
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

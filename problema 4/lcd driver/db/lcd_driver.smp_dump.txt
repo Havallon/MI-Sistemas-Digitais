@@ -1,0 +1,6 @@
+
+State Machine - |lcd_driver|state
+Name state.00 state.finish state.working 
+state.00 0 0 0 
+state.working 1 0 1 
+state.finish 1 1 0 
