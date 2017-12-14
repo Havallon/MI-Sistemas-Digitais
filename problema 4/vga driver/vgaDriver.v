@@ -1,16 +1,16 @@
 //VGA DRIVER
 // Crystal & Havallon
 // 02/12/2017
-module vgaDriver(clk, rst, hsync, vsync, r, g, b);
+module vgaDriver(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B);
 	
-	input clk;
-	input rst;
+	input clock_50MHz;
+	input [11:0] KEY;
 	
-	output hsync;
-	output vsync;
-	output [3:0] r;
-	output [3:0] g;
-	output [3:0] b;
+	output VGA_HS;
+	output VGA_VS;
+	output [3:0] VGA_R;
+	output [3:0] VGA_G;
+	output [3:0] VGA_B;
 	
 	wire [9:0] x;
 	wire [9:0] y;
@@ -24,21 +24,21 @@ module vgaDriver(clk, rst, hsync, vsync, r, g, b);
 	
 	wire clk25;
 	
-	assign vsync = frame_pulse;
-	assign r = {rr,rr,rr,rr};
-	assign g = {gg,gg,gg,gg};
-	assign b = {bb,bb,bb,bb};
+	assign VGA_VS = frame_pulse;
+	assign VGA_R = {rr,rr,rr,rr};
+	assign VGA_G = {gg,gg,gg,gg};
+	assign VGA_B = {bb,bb,bb,bb};
 	
 	clk50to25 clk50to25 (
-		.rst(rst),
-		.clk_in(clk),
+		.rst(KEY[0]),
+		.clk_in(clock_50MHz),
 		.clk_out(clk25)
 	);
 	
 	vgaSync vgaSync(
 		.clk(clk25),
-		.rst(rst),
-		.hsync(hsync),
+		.rst(KEY[0]),
+		.hsync(VGA_HS),
 		.vsync(frame_pulse),
 		.hpos(x),
 		.vpos(y),
@@ -48,7 +48,8 @@ module vgaDriver(clk, rst, hsync, vsync, r, g, b);
 	vgaPxlGen vgaPxlGen (
 		.clk(clk25),
 		.frame_pulse(frame_pulse),
-		.rst(rst),
+		.clk50(clock_50MHz),
+		.rst(KEY[0]),
 		.pxl_en(en),
 		.x(x),
 		.y(y),
