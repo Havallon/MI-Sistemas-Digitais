@@ -1,6 +1,6 @@
 EDA Netlist Writer report for vgaDriver
-Wed Dec 13 15:15:27 2017
-Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Mon Jan 08 17:02:01 2018
+Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
 ---------------------
@@ -17,7 +17,7 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2016  Intel Corporation. All rights reserved.
+Copyright (C) 2017  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Dec 13 15:15:27 2017 ;
+; EDA Netlist Writer Status ; Successful - Mon Jan 08 17:02:01 2018 ;
 ; Revision Name             ; vgaDriver                             ;
 ; Top-level Entity Name     ; vgaDriver                             ;
 ; Family                    ; Cyclone IV E                          ;
@@ -67,20 +67,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                          ;
-+-------------------------------------------------------------------------------------+
-; Generated Files                                                                     ;
-+-------------------------------------------------------------------------------------+
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_7_1200mv_85c_slow.vo     ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_7_1200mv_0c_slow.vo      ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_min_1200mv_0c_fast.vo    ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver.vo                       ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_7_1200mv_85c_v_slow.sdo  ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_7_1200mv_0c_v_slow.sdo   ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_min_1200mv_0c_v_fast.sdo ;
-; /home/crystal/Documentos/vga/simulation/modelsim/vgaDriver_v.sdo                    ;
-+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                ;
++-----------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                           ;
++-----------------------------------------------------------------------------------------------------------+
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_7_1200mv_85c_slow.vo     ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_7_1200mv_0c_slow.vo      ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_min_1200mv_0c_fast.vo    ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver.vo                       ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_7_1200mv_85c_v_slow.sdo  ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_7_1200mv_0c_v_slow.sdo   ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_min_1200mv_0c_v_fast.sdo ;
+; C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/vgaDriver_v.sdo                    ;
++-----------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -88,22 +88,22 @@ agreement for further details.
 +-----------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
-    Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Dec 13 15:15:26 2017
+    Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
+    Info: Processing started: Mon Jan 08 17:01:57 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off vgaDriver -c vgaDriver
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file vgaDriver_7_1200mv_85c_slow.vo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver_7_1200mv_0c_slow.vo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver_min_1200mv_0c_fast.vo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver.vo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver_7_1200mv_85c_v_slow.sdo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver_7_1200mv_0c_v_slow.sdo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver_min_1200mv_0c_v_fast.sdo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file vgaDriver_v.sdo in folder "/home/crystal/Documentos/vga/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_7_1200mv_85c_slow.vo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_7_1200mv_0c_slow.vo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_min_1200mv_0c_fast.vo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver.vo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_7_1200mv_85c_v_slow.sdo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_7_1200mv_0c_v_slow.sdo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file vgaDriver_v.sdo in folder "C:/Users/Havallon/Desktop/mi/problema 4/vga driver/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 1054 megabytes
-    Info: Processing ended: Wed Dec 13 15:15:27 2017
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 572 megabytes
+    Info: Processing ended: Mon Jan 08 17:02:01 2018
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:02
 
 

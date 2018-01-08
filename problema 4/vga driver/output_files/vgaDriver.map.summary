@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Wed Dec 13 15:15:13 2017
-Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Analysis & Synthesis Status : Successful - Mon Jan 08 17:01:18 2018
+Quartus Prime Version : 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 Revision Name : vgaDriver
 Top-level Entity Name : vgaDriver
 Family : Cyclone IV E
-Total logic elements : 60
-    Total combinational functions : 55
-    Dedicated logic registers : 32
-Total registers : 32
-Total pins : 27
+Total logic elements : 355
+    Total combinational functions : 295
+    Dedicated logic registers : 97
+Total registers : 97
+Total pins : 87
 Total virtual pins : 0
-Total memory bits : 1,280
+Total memory bits : 1,568
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0
