@@ -375,9 +375,9 @@ wire             test_has_ended;
   assign D_op_intr = (D_iw_opx == 61) & D_is_opx_inst;
   assign D_op_crst = (D_iw_opx == 62) & D_is_opx_inst;
   assign D_op_opx_rsv63 = (D_iw_opx == 63) & D_is_opx_inst;
-  assign D_op_div_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h1);
-  assign D_op_lcd_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h2);
-  assign D_op_mult_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h0);
+  assign D_op_div_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h0);
+  assign D_op_lcd_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h1);
+  assign D_op_mult_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h2);
   assign D_is_opx_inst = D_iw_op == 58;
   assign test_has_ended = 1'b0;
 

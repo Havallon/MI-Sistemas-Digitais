@@ -1,8 +1,16 @@
-module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN, LCD_RS, LCD_RW);
+module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN, LCD_RS, LCD_RW,ADC_OUT, ADC_CNVST, ADC_CS_N, ADC_REFSEL, ADC_SCLK, ADC_SD, ADC_UB,ADC_SEL);
 
 	input clock_50MHz;
 	input [11:0] KEY;
+	input [1:0]ADC_OUT;
 	
+	output ADC_CNVST;
+	output ADC_CS_N;
+	output ADC_REFSEL;
+	output ADC_SCLK;
+	output ADC_SD;
+	output ADC_UB;
+	output ADC_SEL;
 	output VGA_HS;
 	output VGA_VS;
 	output [3:0] VGA_R;
@@ -22,6 +30,9 @@ module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN
 	wire [9:0] xb;
 	wire [9:0] yb;
 	
+	wire busy;
+	wire [7:0] player1;
+	wire [7:0] player2;
 	
 	vgaDriver vgaDriver(
 		.clock_50MHz(clock_50MHz),
@@ -53,8 +64,27 @@ module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN
 		.p2x_export    (x2),    //     p2x.export
 		.p2y_export    (y2),    //     p2y.export
 		.reset_reset_n (~KEY[0]), //   reset.reset_n
-		.start_export  (KEY[11])   //   start.export
+		.start_export  (KEY[11]),   //   start.export
+		.player1_export (player1),
+		.player_2_export (player2),
+		.busy_export(busy)
 	);
 	
+	
+	AD AD(
+		.RESET_n(~KEY[0]), 
+		.CLOCK_50MHz(clock_50MHz), 
+		.ADC_OUT(ADC_OUT), 
+		.ADC_CNVST(ADC_CNVST), 
+		.ADC_CS_N(ADC_CS_N), 
+		.ADC_REFSEL(ADC_REFSEL), 
+		.ADC_SCLK(ADC_SCLK), 
+		.ADC_SD(ADC_SD), 
+		.ADC_UB(ADC_UB),
+		.ADC_SEL(ADC_SEL),
+		.BUSY(busy),
+		.DATA_AD0(player1),
+		.DATA_AD1(player2)
+	);
 
 endmodule

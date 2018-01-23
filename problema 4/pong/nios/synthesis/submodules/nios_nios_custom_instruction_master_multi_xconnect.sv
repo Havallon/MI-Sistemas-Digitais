@@ -162,21 +162,21 @@ module nios_nios_custom_instruction_master_multi_xconnect
     // Figure out which output is selected, and use that to
     // gate control signals
     // -------------------------------------------------------
-    assign select0 = ci_slave_n >= 1 && ci_slave_n < 2;
+    assign select0 = ci_slave_n >= 0 && ci_slave_n < 1;
 
     assign ci_master0_readra  = (select0 && ci_slave_readra);
     assign ci_master0_readrb  = (select0 && ci_slave_readrb);
     assign ci_master0_writerc = (select0 && ci_slave_writerc);
     assign ci_master0_start   = (select0 && ci_slave_start);
 
-    assign select1 = ci_slave_n >= 2 && ci_slave_n < 3;
+    assign select1 = ci_slave_n >= 1 && ci_slave_n < 2;
 
     assign ci_master1_readra  = (select1 && ci_slave_readra);
     assign ci_master1_readrb  = (select1 && ci_slave_readrb);
     assign ci_master1_writerc = (select1 && ci_slave_writerc);
     assign ci_master1_start   = (select1 && ci_slave_start);
 
-    assign select2 = ci_slave_n >= 0 && ci_slave_n < 1;
+    assign select2 = ci_slave_n >= 2 && ci_slave_n < 3;
 
     assign ci_master2_readra  = (select2 && ci_slave_readra);
     assign ci_master2_readrb  = (select2 && ci_slave_readrb);

@@ -4,19 +4,22 @@
 
 `timescale 1 ps / 1 ps
 module nios (
-		output wire [9:0] bx_export,     //      bx.export
-		output wire [9:0] by_export,     //      by.export
-		input  wire       clk_clk,       //     clk.clk
-		output wire       lcd_out_rs,    // lcd_out.rs
-		output wire       lcd_out_rw,    //        .rw
-		output wire       lcd_out_en,    //        .en
-		output wire [7:0] lcd_out_db,    //        .db
-		output wire [9:0] p1x_export,    //     p1x.export
-		output wire [9:0] p1y_export,    //     p1y.export
-		output wire [9:0] p2x_export,    //     p2x.export
-		output wire [9:0] p2y_export,    //     p2y.export
-		input  wire       reset_reset_n, //   reset.reset_n
-		input  wire       start_export   //   start.export
+		input  wire       busy_export,     //     busy.export
+		output wire [9:0] bx_export,       //       bx.export
+		output wire [9:0] by_export,       //       by.export
+		input  wire       clk_clk,         //      clk.clk
+		output wire       lcd_out_rs,      //  lcd_out.rs
+		output wire       lcd_out_rw,      //         .rw
+		output wire       lcd_out_en,      //         .en
+		output wire [7:0] lcd_out_db,      //         .db
+		output wire [9:0] p1x_export,      //      p1x.export
+		output wire [9:0] p1y_export,      //      p1y.export
+		output wire [9:0] p2x_export,      //      p2x.export
+		output wire [9:0] p2y_export,      //      p2y.export
+		input  wire [7:0] player1_export,  //  player1.export
+		input  wire [7:0] player_2_export, // player_2.export
+		input  wire       reset_reset_n,   //    reset.reset_n
+		input  wire       start_export     //    start.export
 	);
 
 	wire         nios_custom_instruction_master_readra;                                   // nios:D_ci_readra -> nios_custom_instruction_master_translator:ci_slave_readra
@@ -190,10 +193,24 @@ module nios (
 	wire   [1:0] mm_interconnect_0_by_s1_address;                                         // mm_interconnect_0:by_s1_address -> by:address
 	wire         mm_interconnect_0_by_s1_write;                                           // mm_interconnect_0:by_s1_write -> by:write_n
 	wire  [31:0] mm_interconnect_0_by_s1_writedata;                                       // mm_interconnect_0:by_s1_writedata -> by:writedata
+	wire  [31:0] mm_interconnect_0_player1_s1_readdata;                                   // player1:readdata -> mm_interconnect_0:player1_s1_readdata
+	wire   [1:0] mm_interconnect_0_player1_s1_address;                                    // mm_interconnect_0:player1_s1_address -> player1:address
+	wire  [31:0] mm_interconnect_0_player_2_s1_readdata;                                  // player_2:readdata -> mm_interconnect_0:player_2_s1_readdata
+	wire   [1:0] mm_interconnect_0_player_2_s1_address;                                   // mm_interconnect_0:player_2_s1_address -> player_2:address
+	wire  [31:0] mm_interconnect_0_busy_s1_readdata;                                      // busy:readdata -> mm_interconnect_0:busy_s1_readdata
+	wire   [1:0] mm_interconnect_0_busy_s1_address;                                       // mm_interconnect_0:busy_s1_address -> busy:address
 	wire  [31:0] nios_irq_irq;                                                            // irq_mapper:sender_irq -> nios:irq
-	wire         rst_controller_reset_out_reset;                                          // rst_controller:reset_out -> [bx:reset_n, by:reset_n, irq_mapper:reset, memory:reset, mm_interconnect_0:nios_reset_reset_bridge_in_reset_reset, nios:reset_n, p1x:reset_n, p1y:reset_n, p2x:reset_n, p2y:reset_n, rst_translator:in_reset, start:reset_n]
+	wire         rst_controller_reset_out_reset;                                          // rst_controller:reset_out -> [busy:reset_n, bx:reset_n, by:reset_n, irq_mapper:reset, memory:reset, mm_interconnect_0:nios_reset_reset_bridge_in_reset_reset, nios:reset_n, p1x:reset_n, p1y:reset_n, p2x:reset_n, p2y:reset_n, player1:reset_n, player_2:reset_n, rst_translator:in_reset, start:reset_n]
 	wire         rst_controller_reset_out_reset_req;                                      // rst_controller:reset_req -> [memory:reset_req, nios:reset_req, rst_translator:reset_req_in]
 	wire         nios_debug_reset_request_reset;                                          // nios:debug_reset_request -> rst_controller:reset_in1
+
+	nios_busy busy (
+		.clk      (clk_clk),                            //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),    //               reset.reset_n
+		.address  (mm_interconnect_0_busy_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_busy_s1_readdata), //                    .readdata
+		.in_port  (busy_export)                         // external_connection.export
+	);
 
 	nios_bx bx (
 		.clk        (clk_clk),                            //                 clk.clk
@@ -358,7 +375,23 @@ module nios (
 		.out_port   (p2y_export)                           // external_connection.export
 	);
 
-	nios_start start (
+	nios_player1 player1 (
+		.clk      (clk_clk),                               //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address  (mm_interconnect_0_player1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_player1_s1_readdata), //                    .readdata
+		.in_port  (player1_export)                         // external_connection.export
+	);
+
+	nios_player1 player_2 (
+		.clk      (clk_clk),                                //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address  (mm_interconnect_0_player_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_player_2_s1_readdata), //                    .readdata
+		.in_port  (player_2_export)                         // external_connection.export
+	);
+
+	nios_busy start (
 		.clk      (clk_clk),                             //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),     //               reset.reset_n
 		.address  (mm_interconnect_0_start_s1_address),  //                  s1.address
@@ -646,6 +679,8 @@ module nios (
 		.nios_instruction_master_waitrequest    (nios_instruction_master_waitrequest),                //                                 .waitrequest
 		.nios_instruction_master_read           (nios_instruction_master_read),                       //                                 .read
 		.nios_instruction_master_readdata       (nios_instruction_master_readdata),                   //                                 .readdata
+		.busy_s1_address                        (mm_interconnect_0_busy_s1_address),                  //                          busy_s1.address
+		.busy_s1_readdata                       (mm_interconnect_0_busy_s1_readdata),                 //                                 .readdata
 		.bx_s1_address                          (mm_interconnect_0_bx_s1_address),                    //                            bx_s1.address
 		.bx_s1_write                            (mm_interconnect_0_bx_s1_write),                      //                                 .write
 		.bx_s1_readdata                         (mm_interconnect_0_bx_s1_readdata),                   //                                 .readdata
@@ -691,6 +726,10 @@ module nios (
 		.p2y_s1_readdata                        (mm_interconnect_0_p2y_s1_readdata),                  //                                 .readdata
 		.p2y_s1_writedata                       (mm_interconnect_0_p2y_s1_writedata),                 //                                 .writedata
 		.p2y_s1_chipselect                      (mm_interconnect_0_p2y_s1_chipselect),                //                                 .chipselect
+		.player1_s1_address                     (mm_interconnect_0_player1_s1_address),               //                       player1_s1.address
+		.player1_s1_readdata                    (mm_interconnect_0_player1_s1_readdata),              //                                 .readdata
+		.player_2_s1_address                    (mm_interconnect_0_player_2_s1_address),              //                      player_2_s1.address
+		.player_2_s1_readdata                   (mm_interconnect_0_player_2_s1_readdata),             //                                 .readdata
 		.start_s1_address                       (mm_interconnect_0_start_s1_address),                 //                         start_s1.address
 		.start_s1_readdata                      (mm_interconnect_0_start_s1_readdata)                 //                                 .readdata
 	);
