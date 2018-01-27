@@ -3038,6 +3038,7 @@ wire             D_op_cmpne;
 wire             D_op_cmpnei;
 wire             D_op_crst;
 wire             D_op_custom;
+wire             D_op_delay_0;
 wire             D_op_div;
 wire             D_op_div_0;
 wire             D_op_divu;
@@ -3256,6 +3257,7 @@ wire             F_op_cmpne;
 wire             F_op_cmpnei;
 wire             F_op_crst;
 wire             F_op_custom;
+wire             F_op_delay_0;
 wire             F_op_div;
 wire             F_op_div_0;
 wire             F_op_divu;
@@ -3780,6 +3782,7 @@ reg              wait_for_one_post_bret_inst;
   assign F_op_intr = (F_iw_opx == 61) & F_is_opx_inst;
   assign F_op_crst = (F_iw_opx == 62) & F_is_opx_inst;
   assign F_op_opx_rsv63 = (F_iw_opx == 63) & F_is_opx_inst;
+  assign F_op_delay_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h3);
   assign F_op_div_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h0);
   assign F_op_lcd_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h1);
   assign F_op_mult_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h2);
@@ -3911,6 +3914,7 @@ reg              wait_for_one_post_bret_inst;
   assign D_op_intr = (D_iw_opx == 61) & D_is_opx_inst;
   assign D_op_crst = (D_iw_opx == 62) & D_is_opx_inst;
   assign D_op_opx_rsv63 = (D_iw_opx == 63) & D_is_opx_inst;
+  assign D_op_delay_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h3);
   assign D_op_div_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h0);
   assign D_op_lcd_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h1);
   assign D_op_mult_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h2);
@@ -4676,7 +4680,7 @@ defparam nios_nios_cpu_register_bank_b.lpm_file = "nios_nios_cpu_rf_ram_b.hex";
   //debug_mem_slave, which is an e_avalon_slave
   assign debug_mem_slave_clk = clk;
   assign debug_mem_slave_reset = ~reset_n;
-  assign D_ctrl_custom = D_op_div_0|D_op_lcd_0|D_op_mult_0;
+  assign D_ctrl_custom = D_op_delay_0|D_op_div_0|D_op_lcd_0|D_op_mult_0;
   assign R_ctrl_custom_nxt = D_ctrl_custom;
   always @(posedge clk or negedge reset_n)
     begin
@@ -4687,7 +4691,7 @@ defparam nios_nios_cpu_register_bank_b.lpm_file = "nios_nios_cpu_rf_ram_b.hex";
     end
 
 
-  assign D_ctrl_custom_multi = D_op_div_0|D_op_lcd_0|D_op_mult_0;
+  assign D_ctrl_custom_multi = D_op_delay_0|D_op_div_0|D_op_lcd_0|D_op_mult_0;
   assign R_ctrl_custom_multi_nxt = D_ctrl_custom_multi;
   always @(posedge clk or negedge reset_n)
     begin
@@ -5652,6 +5656,7 @@ defparam nios_nios_cpu_register_bank_b.lpm_file = "nios_nios_cpu_rf_ram_b.hex";
     (F_op_srai)? 56'h20202073726169 :
     (F_op_sra)? 56'h20202020737261 :
     (F_op_intr)? 56'h202020696e7472 :
+    (F_op_delay_0)? 56'h64656c61795f30 :
     (F_op_div_0)? 56'h20206469765f30 :
     (F_op_lcd_0)? 56'h20206c63645f30 :
     (F_op_mult_0)? 56'h206d756c745f30 :
@@ -5744,6 +5749,7 @@ defparam nios_nios_cpu_register_bank_b.lpm_file = "nios_nios_cpu_rf_ram_b.hex";
     (D_op_srai)? 56'h20202073726169 :
     (D_op_sra)? 56'h20202020737261 :
     (D_op_intr)? 56'h202020696e7472 :
+    (D_op_delay_0)? 56'h64656c61795f30 :
     (D_op_div_0)? 56'h20206469765f30 :
     (D_op_lcd_0)? 56'h20206c63645f30 :
     (D_op_mult_0)? 56'h206d756c745f30 :

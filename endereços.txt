@@ -10,6 +10,7 @@ player2 0x5010
 busy    0x5000
 
 
-mult opcode 2
-div  opcode 0
-lcd  opcode 1
+mult  opcode 2
+div   opcode 0
+lcd   opcode 1
+delay opcode 3

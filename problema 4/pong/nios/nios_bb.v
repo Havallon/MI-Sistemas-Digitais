@@ -1,5 +1,6 @@
 
 module nios (
+	busy_export,
 	bx_export,
 	by_export,
 	clk_clk,
@@ -11,12 +12,12 @@ module nios (
 	p1y_export,
 	p2x_export,
 	p2y_export,
-	reset_reset_n,
-	start_export,
-	player_2_export,
 	player1_export,
-	busy_export);	
+	player_2_export,
+	reset_reset_n,
+	start_export);	
 
+	input		busy_export;
 	output	[9:0]	bx_export;
 	output	[9:0]	by_export;
 	input		clk_clk;
@@ -28,9 +29,8 @@ module nios (
 	output	[9:0]	p1y_export;
 	output	[9:0]	p2x_export;
 	output	[9:0]	p2y_export;
+	input	[7:0]	player1_export;
+	input	[7:0]	player_2_export;
 	input		reset_reset_n;
 	input		start_export;
-	input	[7:0]	player_2_export;
-	input	[7:0]	player1_export;
-	input		busy_export;
 endmodule

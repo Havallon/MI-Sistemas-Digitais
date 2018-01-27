@@ -65,6 +65,14 @@
          type = "int";
       }
    }
+   element delay_0
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
    element div_0
    {
       datum _sortIndex
@@ -347,6 +355,7 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module name="delay_0" kind="delay" version="1.0" enabled="1" />
  <module name="div_0" kind="div" version="1.0" enabled="1" />
  <module name="lcd_0" kind="lcd" version="1.0" enabled="1" />
  <module
@@ -395,7 +404,7 @@
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
-  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="div_0" baseAddress="0" addressSpan="1" clockCycleType="VARIABLE" /><slave name="lcd_0" baseAddress="1" addressSpan="1" clockCycleType="VARIABLE" /><slave name="mult_0" baseAddress="2" addressSpan="1" clockCycleType="VARIABLE" /></info>]]></parameter>
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="div_0" baseAddress="0" addressSpan="1" clockCycleType="VARIABLE" /><slave name="lcd_0" baseAddress="1" addressSpan="1" clockCycleType="VARIABLE" /><slave name="mult_0" baseAddress="2" addressSpan="1" clockCycleType="VARIABLE" /><slave name="delay_0" baseAddress="3" addressSpan="1" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
@@ -760,6 +769,15 @@
  <connection kind="clock" version="17.0" start="clk.clk" end="player_2.clk" />
  <connection kind="clock" version="17.0" start="clk.clk" end="busy.clk" />
  <connection kind="clock" version="17.0" start="clk.clk" end="memory.clk1" />
+ <connection
+   kind="nios_custom_instruction"
+   version="17.0"
+   start="nios.custom_instruction_master"
+   end="delay_0.delay_instr">
+  <parameter name="CIName" value="delay_0" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="3" />
+ </connection>
  <connection
    kind="nios_custom_instruction"
    version="17.0"

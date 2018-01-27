@@ -1,4 +1,5 @@
 	nios u0 (
+		.busy_export     (<connected-to-busy_export>),     //     busy.export
 		.bx_export       (<connected-to-bx_export>),       //       bx.export
 		.by_export       (<connected-to-by_export>),       //       by.export
 		.clk_clk         (<connected-to-clk_clk>),         //      clk.clk
@@ -10,10 +11,9 @@
 		.p1y_export      (<connected-to-p1y_export>),      //      p1y.export
 		.p2x_export      (<connected-to-p2x_export>),      //      p2x.export
 		.p2y_export      (<connected-to-p2y_export>),      //      p2y.export
-		.reset_reset_n   (<connected-to-reset_reset_n>),   //    reset.reset_n
-		.start_export    (<connected-to-start_export>),    //    start.export
-		.player_2_export (<connected-to-player_2_export>), // player_2.export
 		.player1_export  (<connected-to-player1_export>),  //  player1.export
-		.busy_export     (<connected-to-busy_export>)      //     busy.export
+		.player_2_export (<connected-to-player_2_export>), // player_2.export
+		.reset_reset_n   (<connected-to-reset_reset_n>),   //    reset.reset_n
+		.start_export    (<connected-to-start_export>)     //    start.export
 	);
 
