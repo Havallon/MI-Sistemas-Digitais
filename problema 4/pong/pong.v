@@ -1,8 +1,8 @@
-module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN, LCD_RS, LCD_RW,ADC_OUT, ADC_CNVST, ADC_CS_N, ADC_REFSEL, ADC_SCLK, ADC_SD, ADC_UB,ADC_SEL);
+module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN, LCD_RS, LCD_RW,ADC_DOUT, ADC_CNVST, ADC_CS_N, ADC_REFSEL, ADC_SCLK, ADC_SD, ADC_UB,ADC_SEL);
 
 	input clock_50MHz;
 	input [11:0] KEY;
-	input [1:0]ADC_OUT;
+	input [1:0]ADC_DOUT;
 	
 	output ADC_CNVST;
 	output ADC_CS_N;
@@ -74,7 +74,7 @@ module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN
 	AD AD(
 		.RESET_n(~KEY[0]), 
 		.CLOCK_50MHz(clock_50MHz), 
-		.ADC_OUT(ADC_OUT), 
+		.ADC_OUT(ADC_DOUT), 
 		.ADC_CNVST(ADC_CNVST), 
 		.ADC_CS_N(ADC_CS_N), 
 		.ADC_REFSEL(ADC_REFSEL), 

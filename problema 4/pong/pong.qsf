@@ -288,8 +288,6 @@ set_location_assignment PIN_V2 -to DISP0_D[0]
 set_location_assignment PIN_V10 -to LCD_BACKLIGHT
 set_location_assignment PIN_AB18 -to ADC_CNVST
 set_location_assignment PIN_AA17 -to ADC_CS_N
-set_location_assignment PIN_AB19 -to ADC_DOUT1
-set_location_assignment PIN_AA19 -to ADC_DOUT2
 set_location_assignment PIN_AB17 -to ADC_REFSEL
 set_location_assignment PIN_AA18 -to ADC_SCLK
 set_location_assignment PIN_AA16 -to ADC_SD
@@ -559,8 +557,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DISP0_D[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LCD_BACKLIGHT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CNVST
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CS_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DOUT1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DOUT2
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_REFSEL
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_SCLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_SD
@@ -646,4 +642,6 @@ set_global_assignment -name VERILOG_FILE nios/synthesis/nios.v
 set_global_assignment -name VERILOG_FILE pong.v
 set_global_assignment -name QIP_FILE barrasprite.qip
 set_global_assignment -name QIP_FILE bolasprite.qip
+set_location_assignment PIN_AB19 -to ADC_DOUT[0]
+set_location_assignment PIN_AA19 -to ADC_DOUT[1]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
