@@ -59,6 +59,7 @@ PlayersCollision:
 
 verificarBarra2:
 	movia r13, PLAYER2
+	movi r14, -1
 	ldwio r1, 0(r13)
 	addi r1, r1, 1
 	movi r3, 4
@@ -73,6 +74,7 @@ verificarBarra2:
 verificarBarra1:
 	movia r13, PLAYER1
 	ldwio r1, 0(r13)
+	movi r14, 1
 	addi r1, r1, 1
 	movi r3, 4
 	custom 0, r1, r1, r3
@@ -84,15 +86,51 @@ verificarBarra1:
 	ret
 
 tamanhoBarra:
-	addi r1, r1, 80
-	bge r1, r2, hit
+	addi r1, r1, 16
+	bge r1, r2, hit1
+	addi r1, r1, 16
+	bge r1, r2, hit2
+	addi r1, r1, 16
+	bge r1, r2, hit3
+	addi r1, r1, 16
+	bge r1, r2, hit4
+	addi r1, r1, 16
+	bge r1, r2, hit5
 	ret
 
-hit:
+#aleatorio não esta pronto
+hit1:
+        movi r1, -1
+        movi r7, 5
+        movi r8, 5
+	custom 2, r7, r7, r1 
+	ret
+hit2:
+        
+        movi r7, 5
+        movi r8, 5
+	custom 2, r7, r7, r14
+	ret
+hit3:
+        
+	movi r8, 0
+	movi r7, 5
+	custom 2, r7, r7, r14
+	ret 
+hit4:
+        
+        movi r7, 5
+        movi r8, 5
+	custom 2, r7, r7, r14
+	ret
+#aleatorio não esta pronto	
+hit5:
 	movi r1, -1
-	custom 2, r7, r7, r1
+        movi r7, 5
+        movi r8, 5
+	custom 2, r7, r7, r1 
 	ret
-
+	
 wallCollision:
 	movi r1, 471
 	mov r2, r6
