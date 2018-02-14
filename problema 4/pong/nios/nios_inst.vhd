@@ -15,7 +15,8 @@
 			player1_export  : in  std_logic_vector(7 downto 0) := (others => 'X'); -- export
 			player_2_export : in  std_logic_vector(7 downto 0) := (others => 'X'); -- export
 			reset_reset_n   : in  std_logic                    := 'X';             -- reset_n
-			start_export    : in  std_logic                    := 'X'              -- export
+			start_export    : in  std_logic                    := 'X';             -- export
+			random_export   : in  std_logic_vector(1 downto 0) := (others => 'X')  -- export
 		);
 	end component nios;
 
@@ -36,6 +37,7 @@
 			player1_export  => CONNECTED_TO_player1_export,  --  player1.export
 			player_2_export => CONNECTED_TO_player_2_export, -- player_2.export
 			reset_reset_n   => CONNECTED_TO_reset_reset_n,   --    reset.reset_n
-			start_export    => CONNECTED_TO_start_export     --    start.export
+			start_export    => CONNECTED_TO_start_export,    --    start.export
+			random_export   => CONNECTED_TO_random_export    --   random.export
 		);
 

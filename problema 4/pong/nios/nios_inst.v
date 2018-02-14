@@ -14,6 +14,7 @@
 		.player1_export  (<connected-to-player1_export>),  //  player1.export
 		.player_2_export (<connected-to-player_2_export>), // player_2.export
 		.reset_reset_n   (<connected-to-reset_reset_n>),   //    reset.reset_n
-		.start_export    (<connected-to-start_export>)     //    start.export
+		.start_export    (<connected-to-start_export>),    //    start.export
+		.random_export   (<connected-to-random_export>)    //   random.export
 	);
 

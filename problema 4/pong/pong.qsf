@@ -591,6 +591,12 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to USB_TXE_N
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AB19 -to ADC_DOUT[0]
+set_location_assignment PIN_AA19 -to ADC_DOUT[1]
+set_global_assignment -name VERILOG_FILE nios/synthesis/submodules/nios_random.v
+set_global_assignment -name SYSTEMVERILOG_FILE nios/synthesis/submodules/nios_mm_interconnect_0_rsp_demux_001.sv
+set_global_assignment -name SYSTEMVERILOG_FILE nios/synthesis/submodules/nios_mm_interconnect_0_router_003.sv
+set_global_assignment -name SYSTEMVERILOG_FILE nios/synthesis/submodules/nios_mm_interconnect_0_cmd_mux_001.sv
 set_global_assignment -name VERILOG_FILE nios/synthesis/submodules/delay30fps.v
 set_global_assignment -name VERILOG_FILE nios/synthesis/submodules/nios_player1.v
 set_global_assignment -name VERILOG_FILE nios/synthesis/submodules/nios_busy.v
@@ -642,6 +648,5 @@ set_global_assignment -name VERILOG_FILE nios/synthesis/nios.v
 set_global_assignment -name VERILOG_FILE pong.v
 set_global_assignment -name QIP_FILE barrasprite.qip
 set_global_assignment -name QIP_FILE bolasprite.qip
-set_location_assignment PIN_AB19 -to ADC_DOUT[0]
-set_location_assignment PIN_AA19 -to ADC_DOUT[1]
+set_global_assignment -name VERILOG_FILE random.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

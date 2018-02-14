@@ -9,16 +9,17 @@
 	custom 1, r0, r1, \db
 .endm
 
-.equ START, 0x5090
-.equ P1X, 0x5080
-.equ P1Y, 0x5070
-.equ P2X, 0x5060
-.equ P2Y, 0x5050
-.equ BX, 0x5040
-.equ BY, 0x5030
-.equ PLAYER1, 0x5020
-.equ PLAYER2, 0x5010
-.equ BUSY, 0x5000
+.equ START, 0x50a0
+.equ P1X, 0x5090
+.equ P1Y, 0x5080
+.equ P2X, 0x5070
+.equ P2Y, 0x5060
+.equ BX, 0x5050
+.equ BY, 0x5040
+.equ PLAYER1, 0x5030
+.equ PLAYER2, 0x5020
+.equ BUSY, 0x5010
+.equ RND, 0x5000
 
 
 
@@ -27,8 +28,8 @@ main:
 	#call init
 	call menu
 	movia r11, START
-	movi r7, 5  # velocidade em x
-	movi r8, 5   # velicodade em y
+	movi r7, 3  # velocidade em x
+	movi r8, 3   # velicodade em y
 	mov r9, r0   # score jogador 1
 	mov r10, r0  # score jogador 2
 
@@ -68,7 +69,7 @@ verificarBarra2:
 	custom 2, r1, r1, r3
 	addi r1, r1, 7
 	mov r2, r6
-	bge r2, r1, tamanhoBarra
+	bge r2, r1, tamanhoBarra2
 	ret
 
 verificarBarra1:
@@ -82,10 +83,10 @@ verificarBarra1:
 	custom 2, r1, r1, r3
 	addi r1, r1, 7
 	mov r2, r6
-	bge r2, r1, tamanhoBarra
+	bge r2, r1, tamanhoBarra1
 	ret
 
-tamanhoBarra:
+tamanhoBarra2:
 	addi r1, r1, 16
 	bge r1, r2, hit1
 	addi r1, r1, 16
@@ -98,39 +99,131 @@ tamanhoBarra:
 	bge r1, r2, hit5
 	ret
 
-#aleatorio não esta pronto
+tamanhoBarra1:
+	addi r1, r1, 16
+	bge r1, r2, _hit1
+	addi r1, r1, 16
+	bge r1, r2, _hit2
+	addi r1, r1, 16
+	bge r1, r2, _hit3
+	addi r1, r1, 16
+	bge r1, r2, _hit4
+	addi r1, r1, 16
+	bge r1, r2, _hit5
+	ret
+
+#HIT BARRA ESQUERDA
 hit1:
-        movi r1, -1
-        movi r7, 5
-        movi r8, 5
-	custom 2, r7, r7, r1 
+    movia r14, RND
+	ldwio r1, 0(r14)
+	mov r2, r0
+	beq r1, r2, zero
+	addi r2,r2,1
+	beq r1, r2, um
+	addi r2,r2,1
+	beq r1, r2, dois
+	addi r2,r2,1
+	beq r1, r2, tres
 	ret
 hit2:
-        
-        movi r7, 5
-        movi r8, 5
-	custom 2, r7, r7, r14
+    movi r7, -3
+    movi r8, -3
 	ret
 hit3:
-        
-	movi r8, 0
-	movi r7, 5
-	custom 2, r7, r7, r14
+    movi r8, 0
+	movi r7, -3
 	ret 
 hit4:
-        
-        movi r7, 5
-        movi r8, 5
-	custom 2, r7, r7, r14
+    movi r7, -3
+    movi r8, 3
 	ret
-#aleatorio não esta pronto	
 hit5:
-	movi r1, -1
-        movi r7, 5
-        movi r8, 5
-	custom 2, r7, r7, r1 
+	movia r14, RND
+	ldwio r1, 0(r14)
+	mov r2, r0
+	beq r1, r2, zero
+	addi r2,r2,1
+	beq r1, r2, um
+	addi r2,r2,1
+	beq r1, r2, dois
+	addi r2,r2,1
+	beq r1, r2, tres
 	ret
-	
+
+#HIT BARRA DIREITA
+_hit1:
+    movia r14, RND
+	ldwio r1, 0(r14)
+	mov r2, r0
+	beq r1, r2, _zero
+	addi r2,r2,1
+	beq r1, r2, _um
+	addi r2,r2,1
+	beq r1, r2, _dois
+	addi r2,r2,1
+	beq r1, r2, _tres
+	ret
+_hit2:
+    movi r7, -3
+    movi r8, -3
+	ret
+_hit3:
+    movi r8, 0
+	movi r7, -3
+	ret 
+_hit4:
+    movi r7, -3
+    movi r8, 3
+	ret
+_hit5:
+	movia r14, RND
+	ldwio r1, 0(r14)
+	mov r2, r0
+	beq r1, r2, _zero
+	addi r2,r2,1
+	beq r1, r2, _um
+	addi r2,r2,1
+	beq r1, r2, _dois
+	addi r2,r2,1
+	beq r1, r2, _tres
+	ret
+
+#Indo pra esquerda
+zero:
+	movi r8, 0
+	movi r7, -3
+	ret
+um:
+	movi r7, -3
+	movi r8, -3
+	ret
+dois:
+	movi r7, -2
+	movi r8, -3
+	ret
+tres:
+	movi r7, -3
+	movi r8, -2
+	ret
+
+#Indo pra direita
+_zero:
+	movi r8, 0
+	movi r7, 3
+	ret
+_um:
+	movi r7, 3
+	movi r8, 3
+	ret
+_dois:
+	movi r7, 2
+	movi r8, 3
+	ret
+_tres:
+	movi r7, 3
+	movi r8, 2
+	ret
+
 wallCollision:
 	movi r1, 471
 	mov r2, r6
@@ -346,8 +439,8 @@ gameOver:
 	custom 3, r1,r1,r1
 	custom 3, r1,r1,r1
 	call resetBall
-	movi r7, 5  # velocidade em x
-	movi r8, 5   # velicodade em y
+	movi r7, 3  # velocidade em x
+	movi r8, 3   # velicodade em y
 	mov r9, r0   # score jogador 1
 	mov r10, r0  # score jogador 2
 	br wait
@@ -355,7 +448,7 @@ gameOver:
 #Inicializa��o do display lcd
 init:
 	#Function Set 8-bit, 2-line, F=5x8
-	movi r2, 0x3c
+	movi r2, 0x38
 	instr r2
 	#Display ON
 	movi r2, 0x0c

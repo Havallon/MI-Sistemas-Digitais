@@ -18,6 +18,7 @@ module nios (
 		output wire [9:0] p2y_export,      //      p2y.export
 		input  wire [7:0] player1_export,  //  player1.export
 		input  wire [7:0] player_2_export, // player_2.export
+		input  wire [1:0] random_export,   //   random.export
 		input  wire       reset_reset_n,   //    reset.reset_n
 		input  wire       start_export     //    start.export
 	);
@@ -180,13 +181,6 @@ module nios (
 	wire   [3:0] mm_interconnect_0_nios_debug_mem_slave_byteenable;                       // mm_interconnect_0:nios_debug_mem_slave_byteenable -> nios:debug_mem_slave_byteenable
 	wire         mm_interconnect_0_nios_debug_mem_slave_write;                            // mm_interconnect_0:nios_debug_mem_slave_write -> nios:debug_mem_slave_write
 	wire  [31:0] mm_interconnect_0_nios_debug_mem_slave_writedata;                        // mm_interconnect_0:nios_debug_mem_slave_writedata -> nios:debug_mem_slave_writedata
-	wire         mm_interconnect_0_memory_s1_chipselect;                                  // mm_interconnect_0:memory_s1_chipselect -> memory:chipselect
-	wire  [31:0] mm_interconnect_0_memory_s1_readdata;                                    // memory:readdata -> mm_interconnect_0:memory_s1_readdata
-	wire  [10:0] mm_interconnect_0_memory_s1_address;                                     // mm_interconnect_0:memory_s1_address -> memory:address
-	wire   [3:0] mm_interconnect_0_memory_s1_byteenable;                                  // mm_interconnect_0:memory_s1_byteenable -> memory:byteenable
-	wire         mm_interconnect_0_memory_s1_write;                                       // mm_interconnect_0:memory_s1_write -> memory:write
-	wire  [31:0] mm_interconnect_0_memory_s1_writedata;                                   // mm_interconnect_0:memory_s1_writedata -> memory:writedata
-	wire         mm_interconnect_0_memory_s1_clken;                                       // mm_interconnect_0:memory_s1_clken -> memory:clken
 	wire  [31:0] mm_interconnect_0_start_s1_readdata;                                     // start:readdata -> mm_interconnect_0:start_s1_readdata
 	wire   [1:0] mm_interconnect_0_start_s1_address;                                      // mm_interconnect_0:start_s1_address -> start:address
 	wire         mm_interconnect_0_p1x_s1_chipselect;                                     // mm_interconnect_0:p1x_s1_chipselect -> p1x:chipselect
@@ -225,8 +219,17 @@ module nios (
 	wire   [1:0] mm_interconnect_0_player_2_s1_address;                                   // mm_interconnect_0:player_2_s1_address -> player_2:address
 	wire  [31:0] mm_interconnect_0_busy_s1_readdata;                                      // busy:readdata -> mm_interconnect_0:busy_s1_readdata
 	wire   [1:0] mm_interconnect_0_busy_s1_address;                                       // mm_interconnect_0:busy_s1_address -> busy:address
+	wire  [31:0] mm_interconnect_0_random_s1_readdata;                                    // random:readdata -> mm_interconnect_0:random_s1_readdata
+	wire   [1:0] mm_interconnect_0_random_s1_address;                                     // mm_interconnect_0:random_s1_address -> random:address
+	wire         mm_interconnect_0_memory_s1_chipselect;                                  // mm_interconnect_0:memory_s1_chipselect -> memory:chipselect
+	wire  [31:0] mm_interconnect_0_memory_s1_readdata;                                    // memory:readdata -> mm_interconnect_0:memory_s1_readdata
+	wire  [10:0] mm_interconnect_0_memory_s1_address;                                     // mm_interconnect_0:memory_s1_address -> memory:address
+	wire   [3:0] mm_interconnect_0_memory_s1_byteenable;                                  // mm_interconnect_0:memory_s1_byteenable -> memory:byteenable
+	wire         mm_interconnect_0_memory_s1_write;                                       // mm_interconnect_0:memory_s1_write -> memory:write
+	wire  [31:0] mm_interconnect_0_memory_s1_writedata;                                   // mm_interconnect_0:memory_s1_writedata -> memory:writedata
+	wire         mm_interconnect_0_memory_s1_clken;                                       // mm_interconnect_0:memory_s1_clken -> memory:clken
 	wire  [31:0] nios_irq_irq;                                                            // irq_mapper:sender_irq -> nios:irq
-	wire         rst_controller_reset_out_reset;                                          // rst_controller:reset_out -> [busy:reset_n, bx:reset_n, by:reset_n, irq_mapper:reset, memory:reset, mm_interconnect_0:nios_reset_reset_bridge_in_reset_reset, nios:reset_n, p1x:reset_n, p1y:reset_n, p2x:reset_n, p2y:reset_n, player1:reset_n, player_2:reset_n, rst_translator:in_reset, start:reset_n]
+	wire         rst_controller_reset_out_reset;                                          // rst_controller:reset_out -> [busy:reset_n, bx:reset_n, by:reset_n, irq_mapper:reset, memory:reset, mm_interconnect_0:nios_reset_reset_bridge_in_reset_reset, nios:reset_n, p1x:reset_n, p1y:reset_n, p2x:reset_n, p2y:reset_n, player1:reset_n, player_2:reset_n, random:reset_n, rst_translator:in_reset, start:reset_n]
 	wire         rst_controller_reset_out_reset_req;                                      // rst_controller:reset_req -> [memory:reset_req, nios:reset_req, rst_translator:reset_req_in]
 	wire         nios_debug_reset_request_reset;                                          // nios:debug_reset_request -> rst_controller:reset_in1
 
@@ -426,6 +429,14 @@ module nios (
 		.address  (mm_interconnect_0_player_2_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_0_player_2_s1_readdata), //                    .readdata
 		.in_port  (player_2_export)                         // external_connection.export
+	);
+
+	nios_random random (
+		.clk      (clk_clk),                              //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
+		.address  (mm_interconnect_0_random_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_random_s1_readdata), //                    .readdata
+		.in_port  (random_export)                         // external_connection.export
 	);
 
 	nios_busy start (
@@ -828,6 +839,8 @@ module nios (
 		.player1_s1_readdata                    (mm_interconnect_0_player1_s1_readdata),              //                                 .readdata
 		.player_2_s1_address                    (mm_interconnect_0_player_2_s1_address),              //                      player_2_s1.address
 		.player_2_s1_readdata                   (mm_interconnect_0_player_2_s1_readdata),             //                                 .readdata
+		.random_s1_address                      (mm_interconnect_0_random_s1_address),                //                        random_s1.address
+		.random_s1_readdata                     (mm_interconnect_0_random_s1_readdata),               //                                 .readdata
 		.start_s1_address                       (mm_interconnect_0_start_s1_address),                 //                         start_s1.address
 		.start_s1_readdata                      (mm_interconnect_0_start_s1_readdata)                 //                                 .readdata
 	);

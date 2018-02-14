@@ -27,7 +27,7 @@ module delay30fps (dataa, datab, result, clk, clk_en, start, reset, done);
 						counter <= 21'd0;
 					end
 				end else begin
-					if (counter == 21'd1_666_666) begin
+					if (counter == 21'd833_333) begin
 						state <= 1'b0;
 						done <= 1'b1;
 					end else begin

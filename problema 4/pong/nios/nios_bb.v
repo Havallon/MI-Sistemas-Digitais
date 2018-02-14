@@ -15,7 +15,8 @@ module nios (
 	player1_export,
 	player_2_export,
 	reset_reset_n,
-	start_export);	
+	start_export,
+	random_export);	
 
 	input		busy_export;
 	output	[9:0]	bx_export;
@@ -33,4 +34,5 @@ module nios (
 	input	[7:0]	player_2_export;
 	input		reset_reset_n;
 	input		start_export;
+	input	[1:0]	random_export;
 endmodule

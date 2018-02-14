@@ -120,11 +120,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "ADC_DOUT[0]",
+					"name" : "ADC_DOUT[1]",
 					"strict" : false
 				},
 				{
-					"name" : "ADC_DOUT[1]",
+					"name" : "ADC_DOUT[0]",
 					"strict" : false
 				},
 				{
