@@ -25,7 +25,7 @@
 
 main:
 	call resetBall
-	#call init
+	call init
 	call menu
 	movia r11, START
 	movi r7, 3  # velocidade em x
@@ -112,7 +112,7 @@ tamanhoBarra1:
 	bge r1, r2, _hit5
 	ret
 
-#HIT BARRA ESQUERDA
+#HIT BARRA DIREITA
 hit1:
     movia r14, RND
 	ldwio r1, 0(r14)
@@ -131,8 +131,8 @@ hit2:
 	ret
 hit3:
     movi r8, 0
-	movi r7, -3
-	ret 
+    movi r7, -3
+        ret 
 hit4:
     movi r7, -3
     movi r8, 3
@@ -169,7 +169,7 @@ _hit2:
 	ret
 _hit3:
     movi r8, 0
-	movi r7, -3
+    movi r7, 3
 	ret 
 _hit4:
     movi r7, -3
@@ -198,12 +198,12 @@ um:
 	movi r8, -3
 	ret
 dois:
-	movi r7, -2
+	movi r7, -1
 	movi r8, -3
 	ret
 tres:
 	movi r7, -3
-	movi r8, -2
+	movi r8, -1
 	ret
 
 #Indo pra direita
@@ -216,12 +216,12 @@ _um:
 	movi r8, 3
 	ret
 _dois:
-	movi r7, 2
+	movi r7, 1
 	movi r8, 3
 	ret
 _tres:
 	movi r7, 3
-	movi r8, 2
+	movi r8, 1
 	ret
 
 wallCollision:
@@ -251,7 +251,7 @@ changeRightWall:
 	movi r1, 0x8a
 	instr r1
 	data r3
-	movi r7, 5
+	movi r7, 3
 	mov r8, r7
 	br resetBall
 
@@ -263,7 +263,7 @@ changeLeftWall:
 	movi r1, 0xca
 	instr r1
 	data r3
-	movi r7, 5
+	movi r7, 3
 	mov r8, r7
 	br resetBall
 
@@ -447,21 +447,33 @@ gameOver:
 
 #Inicializa��o do display lcd
 init:
-	#Function Set 8-bit, 2-line, F=5x8
-	movi r2, 0x38
+	movi r2, 0x30
 	instr r2
-	#Display ON
+	
+	movi r2, 0x30
+	instr r2
+	
+	movi r2, 0x39
+	instr r2
+	
+	movi r2, 0x14
+	instr r2
+	
+	movi r2, 0x56
+	instr r2
+
+	movi r2, 0x6d
+	instr r2
+
 	movi r2, 0x0c
 	instr r2
-	#Clear display
-	movi r2, 0x1
+
+	movi r2, 0x06
 	instr r2
-	#Entry Mode set - Increment mode
-	movi r2, 0x6
+	
+	movi r2, 0x01
 	instr r2
-	#Apontando para o inicio do lcd
-	movi r2, 0x80
-	instr r2
+
 	ret
 
 #Exibindo o placar no display

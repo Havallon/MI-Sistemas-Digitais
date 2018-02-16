@@ -76,7 +76,6 @@ module pong(clock_50MHz, KEY, VGA_HS, VGA_VS, VGA_R, VGA_G, VGA_B, LCD_D, LCD_EN
 	
 	random random (
 		.clk(clock_50MHz),
-		.rst(KEY[0]),
 		.out(rnd)
 	);
 	

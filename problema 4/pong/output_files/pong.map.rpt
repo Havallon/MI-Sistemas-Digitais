@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pong
-Wed Feb 14 11:16:29 2018
+Thu Feb 15 22:12:21 2018
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -274,7 +274,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 14 11:16:28 2018       ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 15 22:12:20 2018       ;
 ; Quartus Prime Version              ; 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
 ; Revision Name                      ; pong                                        ;
 ; Top-level Entity Name              ; pong                                        ;
@@ -465,6 +465,7 @@ agreement for further details.
 ; db/altsyncram_pl91.tdf                                                                ; yes             ; Auto-Generated Megafunction                  ; C:/Users/Havallon/Desktop/mi/problema 4/pong/db/altsyncram_pl91.tdf                                                                ;             ;
 ; bola.mif                                                                              ; yes             ; Auto-Found Memory Initialization File        ; C:/Users/Havallon/Desktop/mi/problema 4/pong/bola.mif                                                                              ;             ;
 ; db/altsyncram_g6f1.tdf                                                                ; yes             ; Auto-Generated Megafunction                  ; C:/Users/Havallon/Desktop/mi/problema 4/pong/db/altsyncram_g6f1.tdf                                                                ;             ;
+; pong.hex                                                                              ; yes             ; Auto-Found Memory Initialization File        ; C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex                                                                              ;             ;
 ; db/altsyncram_6mc1.tdf                                                                ; yes             ; Auto-Generated Megafunction                  ; C:/Users/Havallon/Desktop/mi/problema 4/pong/db/altsyncram_6mc1.tdf                                                                ;             ;
 ; altera_std_synchronizer.v                                                             ; yes             ; Megafunction                                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altera_std_synchronizer.v                                                   ;             ;
 ; db/altsyncram_ac71.tdf                                                                ; yes             ; Auto-Generated Megafunction                  ; C:/Users/Havallon/Desktop/mi/problema 4/pong/db/altsyncram_ac71.tdf                                                                ;             ;
@@ -511,8 +512,8 @@ agreement for further details.
 ;                                             ;                   ;
 ; Maximum fan-out node                        ; clock_50MHz~input ;
 ; Maximum fan-out                             ; 1370              ;
-; Total fan-out                               ; 15218             ;
-; Average fan-out                             ; 3.63              ;
+; Total fan-out                               ; 15214             ;
+; Average fan-out                             ; 3.62              ;
 +---------------------------------------------+-------------------+
 
 
@@ -650,7 +651,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-----------+
 ; Name                                                                                                                                                                                                                                                                                        ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF       ;
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-----------+
-; nios:nios|nios_memory:memory|altsyncram:the_altsyncram|altsyncram_g6f1:auto_generated|ALTSYNCRAM                                                                                                                                                                                            ; AUTO ; Single Port      ; 2048         ; 32           ; --           ; --           ; 65536 ; None      ;
+; nios:nios|nios_memory:memory|altsyncram:the_altsyncram|altsyncram_g6f1:auto_generated|ALTSYNCRAM                                                                                                                                                                                            ; AUTO ; Single Port      ; 2048         ; 32           ; --           ; --           ; 65536 ; pong.hex  ;
 ; nios:nios|nios_nios:nios|nios_nios_cpu:cpu|nios_nios_cpu_nios2_oci:the_nios_nios_cpu_nios2_oci|nios_nios_cpu_nios2_ocimem:the_nios_nios_cpu_nios2_ocimem|nios_nios_cpu_ociram_sp_ram_module:nios_nios_cpu_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_ac71:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 256          ; 32           ; --           ; --           ; 8192  ; None      ;
 ; nios:nios|nios_nios:nios|nios_nios_cpu:cpu|nios_nios_cpu_register_bank_a_module:nios_nios_cpu_register_bank_a|altsyncram:the_altsyncram|altsyncram_6mc1:auto_generated|ALTSYNCRAM                                                                                                           ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024  ; None      ;
 ; nios:nios|nios_nios:nios|nios_nios_cpu:cpu|nios_nios_cpu_register_bank_b_module:nios_nios_cpu_register_bank_b|altsyncram:the_altsyncram|altsyncram_6mc1:auto_generated|ALTSYNCRAM                                                                                                           ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024  ; None      ;
@@ -1646,7 +1647,7 @@ Encoding Type:  One-Hot
 ; Total registers                              ; 1483  ;
 ; Number of registers using Synchronous Clear  ; 164   ;
 ; Number of registers using Synchronous Load   ; 152   ;
-; Number of registers using Asynchronous Clear ; 1107  ;
+; Number of registers using Asynchronous Clear ; 1103  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 850   ;
 ; Number of registers using Preset             ; 0     ;
@@ -6343,7 +6344,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 74                          ;
 ; cycloneiii_ff         ; 1406                        ;
-;     CLR               ; 373                         ;
+;     CLR               ; 369                         ;
 ;     CLR SCLR          ; 11                          ;
 ;     CLR SCLR SLD      ; 15                          ;
 ;     CLR SLD           ; 66                          ;
@@ -6354,7 +6355,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SLD           ; 12                          ;
 ;     SCLR              ; 2                           ;
 ;     SLD               ; 10                          ;
-;     plain             ; 128                         ;
+;     plain             ; 132                         ;
 ; cycloneiii_lcell_comb ; 2346                        ;
 ;     arith             ; 460                         ;
 ;         2 data inputs ; 137                         ;
@@ -6377,7 +6378,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:14     ;
+; Top            ; 00:00:13     ;
 +----------------+--------------+
 
 
@@ -6387,7 +6388,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Wed Feb 14 11:14:55 2018
+    Info: Processing started: Thu Feb 15 22:10:57 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pong -c pong
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -6638,7 +6639,17 @@ Info (12133): Instantiated megafunction "nios:nios|nios_memory:memory|altsyncram
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g6f1.tdf
     Info (12023): Found entity 1: altsyncram_g6f1 File: C:/Users/Havallon/Desktop/mi/problema 4/pong/db/altsyncram_g6f1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_g6f1" for hierarchy "nios:nios|nios_memory:memory|altsyncram:the_altsyncram|altsyncram_g6f1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex -- setting all initial values to 0 File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/submodules/nios_memory.v Line: 69
+Warning (113015): Width of data items in "pong.hex" is greater than the memory width. Wrapping data items to subsequent addresses. Found 256 warnings, reporting 10 File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 1
+    Warning (113009): Data at line (2) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 2
+    Warning (113009): Data at line (3) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 3
+    Warning (113009): Data at line (4) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 4
+    Warning (113009): Data at line (5) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 5
+    Warning (113009): Data at line (6) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 6
+    Warning (113009): Data at line (7) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 7
+    Warning (113009): Data at line (8) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 8
+    Warning (113009): Data at line (9) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 9
+    Warning (113009): Data at line (10) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 10
+    Warning (113009): Data at line (11) of memory initialization file "pong.hex" is too wide to fit in one memory word. Wrapping data to subsequent addresses. File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.hex Line: 11
 Info (12128): Elaborating entity "mul" for hierarchy "nios:nios|mul:mult" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/nios.v Line: 326
 Warning (10230): Verilog HDL assignment warning at mul.v(75): truncated value with size 64 to match size of target (32) File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/submodules/mul.v Line: 75
 Info (12128): Elaborating entity "nios_nios" for hierarchy "nios:nios|nios_nios:nios" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/nios.v Line: 372
@@ -6768,11 +6779,11 @@ Info (12128): Elaborating entity "nios_irq_mapper" for hierarchy "nios:nios|nios
 Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "nios:nios|altera_reset_controller:rst_controller" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/nios.v Line: 915
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "nios:nios|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/submodules/altera_reset_controller.v Line: 208
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "nios:nios|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/nios/synthesis/submodules/altera_reset_controller.v Line: 220
-Info (12128): Elaborating entity "random" for hierarchy "random:random" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.v Line: 81
-Info (12128): Elaborating entity "AD" for hierarchy "AD:AD" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.v Line: 97
+Info (12128): Elaborating entity "random" for hierarchy "random:random" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.v Line: 80
+Info (12128): Elaborating entity "AD" for hierarchy "AD:AD" File: C:/Users/Havallon/Desktop/mi/problema 4/pong/pong.v Line: 96
 Warning (10036): Verilog HDL or VHDL warning at AD.v(46): object "timing" assigned a value but never read File: C:/Users/Havallon/Desktop/mi/problema 4/pong/AD.v Line: 46
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2018.02.14.11:15:53 Progress: Loading sldd144d38a/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2018.02.15.22:11:46 Progress: Loading sldd144d38a/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -6826,11 +6837,11 @@ Info (21057): Implemented 3109 device resources after synthesis - the final reso
     Info (21059): Implemented 33 output pins
     Info (21061): Implemented 2910 logic cells
     Info (21064): Implemented 147 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 41 warnings
     Info: Peak virtual memory: 847 megabytes
-    Info: Processing ended: Wed Feb 14 11:16:29 2018
-    Info: Elapsed time: 00:01:34
-    Info: Total CPU time (on all processors): 00:02:00
+    Info: Processing ended: Thu Feb 15 22:12:21 2018
+    Info: Elapsed time: 00:01:24
+    Info: Total CPU time (on all processors): 00:01:52
 
 
 +------------------------------------------+
