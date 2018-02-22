@@ -164,7 +164,7 @@ _hit1:
 	beq r1, r2, _tres
 	ret
 _hit2:
-    movi r7, -3
+    movi r7, 3
     movi r8, -3
 	ret
 _hit3:
@@ -172,7 +172,7 @@ _hit3:
     movi r7, 3
 	ret 
 _hit4:
-    movi r7, -3
+    movi r7, 3
     movi r8, 3
 	ret
 _hit5:
@@ -229,7 +229,7 @@ wallCollision:
 	mov r2, r6
 	addi r2,r2,4
 	bge r2, r1, changeDownWall
-	movi r1, 639
+	movi r1, 625
 	mov r2, r5
 	addi r2, r2, 4
 	bge r2, r1, changeRightWall
@@ -237,7 +237,7 @@ wallCollision:
 	mov r2, r6
 	subi r2, r2, 4
 	bge r1, r2, changeDownWall
-	mov r1,r0
+	movi r1, 8
 	mov r2, r5
 	subi r2, r2, 4
 	bge r1, r2, changeLeftWall

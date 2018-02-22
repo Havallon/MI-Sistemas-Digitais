@@ -1,5 +1,5 @@
 Assembler report for pong
-Thu Feb 15 22:13:07 2018
+Thu Feb 22 10:31:44 2018
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Feb 15 22:13:07 2018 ;
+; Assembler Status      ; Successful - Thu Feb 22 10:31:44 2018 ;
 ; Revision Name         ; pong                                  ;
 ; Top-level Entity Name ; pong                                  ;
 ; Family                ; Cyclone IV E                          ;
@@ -78,8 +78,8 @@ agreement for further details.
 +----------------+-----------------------------------------------------------------------------+
 ; Option         ; Setting                                                                     ;
 +----------------+-----------------------------------------------------------------------------+
-; JTAG usercode  ; 0x003BFB78                                                                  ;
-; Checksum       ; 0x003BFB78                                                                  ;
+; JTAG usercode  ; 0x003BF75B                                                                  ;
+; Checksum       ; 0x003BF75B                                                                  ;
 +----------------+-----------------------------------------------------------------------------+
 
 
@@ -89,15 +89,15 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Thu Feb 15 22:13:02 2018
+    Info: Processing started: Thu Feb 22 10:31:39 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off pong -c pong
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 616 megabytes
-    Info: Processing ended: Thu Feb 15 22:13:07 2018
+    Info: Peak virtual memory: 619 megabytes
+    Info: Processing ended: Thu Feb 22 10:31:44 2018
     Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Total CPU time (on all processors): 00:00:04
 
 
