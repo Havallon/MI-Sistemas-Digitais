@@ -1,9 +1,9 @@
 .global main
-
+#usado para instrução no lcd
 .macro instr db
 	custom 1, r0, r0, \db
 .endm
-
+#usado para dados no lcd
 .macro data db
 	movi r1, 1
 	custom 1, r0, r1, \db
@@ -18,11 +18,13 @@
 .equ BY, 0x5040
 .equ PLAYER1, 0x5030
 .equ PLAYER2, 0x5020
-.equ BUSY, 0x5010
 .equ RND, 0x5000
 
 
-
+#Reseta a posição da bola
+#Inicializa o lcd
+#Cria o menu na lcd
+#Inicializa alguns registradores
 main:
 	call resetBall
 	call init
@@ -32,14 +34,18 @@ main:
 	movi r8, 3   # velicodade em y
 	mov r9, r0   # score jogador 1
 	mov r10, r0  # score jogador 2
-
+#Espera que o usuario clique no botão de start
+#ao clicar escreve o placar no lcd e começa o gameloop
 wait:
 	ldwio r2, 0(r11)
 	beq r2, r0, wait
 	movi r2, 1
 	instr r2	
 	call placar
-	
+#Looping de funcionamento do jogo.
+#realiza todas as funções pertinentes ao
+#jogo tais como o tratamento das colisões
+#e as movimentações da bola e barras.
 gameLoop:
 	call moverBarra
 	call moveBall
@@ -47,7 +53,7 @@ gameLoop:
 	call wallCollision
 	custom 3, r1, r1, r1
 	br gameLoop
-
+#Ve se a bola chegou no x da barra1 e barra2, dependendo entra no verificarBarra1 ou verificarBarra2
 PlayersCollision:
 	movi r1, 610 # X da barra 2
 	mov r2, r5   # X da bola
@@ -57,7 +63,8 @@ PlayersCollision:
 	subi r2, r2, 8
 	bge r1, r2, verificarBarra1
 	ret
-
+#Faz a conversão do valor pego pelo potenciometro 
+#para o y da tela e assim retorna a colisão ou nao
 verificarBarra2:
 	movia r13, PLAYER2
 	movi r14, -1
@@ -71,7 +78,7 @@ verificarBarra2:
 	mov r2, r6
 	bge r2, r1, tamanhoBarra2
 	ret
-
+#Mesmo procedimento acima
 verificarBarra1:
 	movia r13, PLAYER1
 	ldwio r1, 0(r13)
@@ -85,7 +92,8 @@ verificarBarra1:
 	mov r2, r6
 	bge r2, r1, tamanhoBarra1
 	ret
-
+#Ao colidir com a barra Dependendo da posição
+#entra em um hit diferente
 tamanhoBarra2:
 	addi r1, r1, 16
 	bge r1, r2, hit1
@@ -98,7 +106,8 @@ tamanhoBarra2:
 	addi r1, r1, 16
 	bge r1, r2, hit5
 	ret
-
+#Ao colidir com a barra Dependendo da posição
+#entra em um hit diferente
 tamanhoBarra1:
 	addi r1, r1, 16
 	bge r1, r2, _hit1
@@ -223,7 +232,8 @@ _tres:
 	movi r7, 3
 	movi r8, 1
 	ret
-
+#Ao realizar uma colisão em qualquer parte do wall
+#entra em uma parte diferente
 wallCollision:
 	movi r1, 471
 	mov r2, r6
@@ -242,7 +252,10 @@ wallCollision:
 	subi r2, r2, 4
 	bge r1, r2, changeLeftWall
 	ret
-
+#Ao ocorrer a colisão em uma das walls
+#Adiciona um ponto para o jogador caso
+#o mesmo nao tenha atingido 5 pontos.
+#Ao atingir 5 é dada a vitoria
 changeRightWall:
 	addi r9, r9, 1
 	movi r1, 5
@@ -267,11 +280,14 @@ changeLeftWall:
 	mov r8, r7
 	br resetBall
 
+#Ao bater na wall de cima ou baixo
+#retorna no mesmo angulo de entrada
 changeDownWall:
 	movi r1, -1
 	custom 2, r8,r8,r1
 	ret
-
+#Envia para o módulo VGA a posição em que deve-se
+#desenhar a bola
 moveBall:
 	add r5,r5,r7
 	add r6,r6,r8
@@ -280,7 +296,11 @@ moveBall:
 	movia r12, BY
 	stwio r6, 0(r12)
 	ret
-
+	
+#Realiza a movimentação da barra
+#de acordo com o posicionamento do 
+#potenciometro, após isso envia para o módulo VGA
+#a posição da barra para o mesmo desenhar na tela
 moverBarra:
 	# pos = valor do potenciometro: 0-255
 	# pos = (pos + 1)/4;
@@ -312,7 +332,8 @@ moverBarra:
 	movia r12, P2Y
 	stwio r2, 0(r12)
 	ret
-
+#Reseta a posição da bola
+#centralizando a mesma
 resetBall:
 	movia r12, BX
 	movi r1, 316
@@ -324,7 +345,7 @@ resetBall:
 	movi r6, 236 # Y da bola	
 	ret
 
-
+#Escreve no lcd a vitória do jogador 1
 win1:
 	movi r2, 0x1
 	instr r2
@@ -366,7 +387,7 @@ win1:
  	data r2
 	movia r11, START
 	br gameOver
-
+#escreve no lcd a vitoria do jogador 2
 win2:
 	movi r2, 0x1
 	instr r2
@@ -408,14 +429,12 @@ win2:
  	data r2
 	movia r11, START
 	br gameOver
-
+#espera o botao de start para começar o jogo novamente
 gameOver:
 	ldwio r2, 0(r11)
 	beq r2, r0, gameOver
 	movi r2, 1
 	instr r2
-	mov r9, r0
-	mov r10, r0	
 	call menu
 	custom 3, r1,r1,r1
 	custom 3, r1,r1,r1
